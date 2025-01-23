@@ -9,6 +9,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import 'react-toastify/dist/ReactToastify.css';
 import { BsGithub } from "react-icons/bs";
 import Swal from 'sweetalert2'
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 
 
@@ -24,6 +25,8 @@ const Registration = () => {
 
     const [roleDes, setRoleDes] = useState('');
 
+    const axiosPublic = useAxiosPublic();
+
     
 
 
@@ -33,17 +36,26 @@ const Registration = () => {
         handleGoogle_Login()
             .then((result) => {
 
-                 
+              
 
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Successfully Register",
-                    showConfirmButton: false,
-                    timer: 2000
-                });
 
-                navigate('/');
+
+                const user={name:result.user?.displayName,email:result.user?.email,photo_url:result.user?.photoURL,role:'student',};
+                    
+                    axiosPublic.post('/user',user)
+                    .then(res => {
+                         if(res.data.insertedId){
+                             
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Successfully Register",
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                            navigate('/');
+                         }
+                    })
 
             }).catch((error) => {
 
@@ -86,7 +98,7 @@ const Registration = () => {
         const password = e.target.password.value;
         const photo_url = e.target.photo_url.value;
         const checkbox = e.target.checkbox.checked;
-        const specialized = e.target.specialized.value;
+        const specialized = e.target.specialized?.value;
         const role  = e.target.role.value;
 
          
@@ -118,15 +130,31 @@ const Registration = () => {
                 updateProfile(auth.currentUser, {
                     displayName: name, photoURL: photo_url
                 }).then(() => {
-                    e.target.reset();
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: "Successfully Register",
-                        showConfirmButton: false,
-                        timer: 2000
-                    });
-                    navigate('/');
+
+                    const user={name,email,photo_url,role,specialized};
+                    
+                    axiosPublic.post('/user',user)
+                    .then(res => {
+                         if(res.data.insertedId){
+                            e.target.reset();
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Successfully Register",
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                            navigate('/');
+                         }
+                    })
+
+
+
+
+
+                    
+
+
                 }).catch((error) => {
                     toast.error(error.errorMessage);
                 });

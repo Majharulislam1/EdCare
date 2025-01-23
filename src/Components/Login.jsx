@@ -19,7 +19,7 @@ const Login = () => {
 
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    const { handleLogin, handleGoogle_Login } = useContext(AuthContext);
+    const { handleLogin, handleGoogle_Login,handleGithub_Login  } = useContext(AuthContext);
 
 
 
@@ -57,6 +57,31 @@ const Login = () => {
             });
 
     }
+
+
+    const handleGithubLogin =()=>{
+              handleGithub_Login()
+              .then((result) => {
+    
+                console.log(result);
+    
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Successfully Register",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+    
+                navigate('/');
+    
+            }).catch((error) => {
+                const errorMessage = error.message;
+                toast.error(errorMessage);
+            });
+        }
+
+
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -112,13 +137,13 @@ const Login = () => {
 
                                 <div className="mb-4">
                                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
-                                    <input type="email" id="email" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="your@email.com" required />
+                                    <input type="email" id="email" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-primary  focus:border-primary" placeholder="your@email.com" required />
                                 </div>
 
                                 <div className="mb-4 relative">
                                     <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
 
-                                    <input type={showPassword ? "text" : "password"} id="password" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your password" required />
+                                    <input type={showPassword ? "text" : "password"} id="password" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none  focus:ring-primary  focus:border-primary" placeholder="Enter your password" required />
                                     <span className="cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
                                         {
                                             showPassword ? <FaEye className="absolute top-[41px] right-[13px]" /> : <FaEyeSlash className="absolute top-[41px] right-[13px]" />
@@ -130,21 +155,21 @@ const Login = () => {
 
 
                                     <a
-                                        className="text-xs text-gray-600 hover:text-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Forgot
+                                        className="text-xs text-gray-600 hover:text-primary focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-primary">Forgot
                                         Password?</a>
                                 </div>
 
 
                                 <div className="flex items-center justify-between mb-4">
                                     <div className="flex items-center">
-                                        <input type="checkbox" name="checkbox" id="remember" className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 focus:outline-none"
+                                        <input type="checkbox" name="checkbox" id="remember" className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary focus:outline-none"
                                         />
                                         <label htmlFor="remember" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">Terms and Conditions</label>
                                     </div>
                                     <Link to={'/registration'}
-                                        className="text-xs text-indigo-500 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">New user</Link>
+                                        className="text-xs text-primary hover:text-primary focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-primary">New user</Link>
                                 </div>
-                                <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Login</button>
+                                <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary  focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-primary">Login</button>
 
 
                             </form>
@@ -155,7 +180,7 @@ const Login = () => {
                                 </button>
                             </div>
                             <div className="w-full flex mt-4 justify-center">
-                                <button onClick={handleGoogleLogin} className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                                <button onClick={handleGithubLogin} className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
 
                                     <BsGithub className="mr-3 text-xl" />
                                     <span >Continue with GitHub</span>

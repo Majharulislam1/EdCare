@@ -14,7 +14,6 @@ import Home from "./Components/Home";
          path:'/',
          element:<Home></Home>
       }
-    
     ]
     },
   ]);

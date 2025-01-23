@@ -21,7 +21,7 @@ export default {
     },
     colors: {
       primary: '#07a698',
-      secondary: '#142e2c',
+      secondary: '#f2f3f5',
       title:'#3e425c',
       paragraph:'#6c706f'
     },

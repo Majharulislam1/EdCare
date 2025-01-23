@@ -2,7 +2,7 @@
 
 const Session_home_card = ({ sessions }) => {
 
-    const { id, sessionTitle, sessionDescription, } = sessions;
+    // const { id, sessionTitle, sessionDescription, } = sessions;
 
 
     return (

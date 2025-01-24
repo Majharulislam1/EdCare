@@ -9,6 +9,7 @@ import Registration from "./Components/Registration";
 import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import Create_study_session from "./Components/Create_study_session";
+import All_Study_Session from "./Components/All_Study_Session";
 
   const router = createBrowserRouter([
     {
@@ -36,7 +37,7 @@ import Create_study_session from "./Components/Create_study_session";
           element:<Create_study_session></Create_study_session>
         },{
            path:'all_study_session',
-           element:<p>all study session</p>
+           element:<All_Study_Session></All_Study_Session>
         },
         {
           path:'upload_materials',

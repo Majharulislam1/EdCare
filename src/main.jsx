@@ -5,11 +5,16 @@ import './index.css'
 import { RouterProvider } from "react-router-dom";
 import router from './Routes.jsx';
 import Authentication from './Components/Authentication.jsx';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Authentication>
-      <RouterProvider router={router} />
-    </Authentication>
+    <QueryClientProvider client={queryClient}>
+      <Authentication>
+        <RouterProvider router={router} />
+      </Authentication>
+    </QueryClientProvider>
   </StrictMode>,
 )

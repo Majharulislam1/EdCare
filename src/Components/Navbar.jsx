@@ -22,16 +22,12 @@ const Navbar = () => {
 
     const [menu, setMenu] = useState(true);
 
-
+ 
 
 
     return (
         <div className="sm:-mb-1">
-            <div className="bg-[#ffffff] sm:-mb-1">
-                <div className="w-4/5 mx-auto">
-                    <h1 className="text-center py-2 text-primary font-bold">majharul2022islam@gmail.com</h1>
-                </div>
-            </div>
+            
 
 
             <div className="bg-white">

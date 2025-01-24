@@ -127,7 +127,7 @@ const Create_study_session = () => {
 
                                     <div className="col-span-6 sm:col-span-3">
                                         <label htmlFor="fee" className="text-sm font-medium text-gray-900 block mb-2">Registration fee:</label>
-                                        <input type="number" defaultValue={0} name="fee" id="fee" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Registration fee" required="" />
+                                        <input type="number" readOnly defaultValue={0} name="fee" id="fee" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Registration fee" required="" />
                                     </div>
 
                                     <div className="col-span-6 sm:col-span-3 ">

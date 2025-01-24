@@ -5,9 +5,10 @@ import logo from '../assets/logo-black.png'
 
 
 
-import {  useState } from "react";
-// import { AuthContext } from "./Authentication";
+import { useContext, useState } from "react";
+
 import { Tooltip } from "react-tooltip";
+import { AuthContext } from "./Authentication";
 
 
 
@@ -15,16 +16,13 @@ import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
 
-    // const { handleLogOut } = useContext(AuthContext);
+    const { handleLogOut } = useContext(AuthContext);
 
-    // const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
-    const user ={name:'mahadi hasan'}
     const [menu, setMenu] = useState(true);
 
-   const handleLogOut = ()=>{
-       console.log('hello world');
-   }
+
 
 
     return (
@@ -36,7 +34,7 @@ const Navbar = () => {
             </div>
 
 
-            <div className="bg-secondary">
+            <div className="bg-white">
                 <div className="w-4/5 mx-auto">
                     <div className="flex justify-between items-center lg:py-6 md:py-6 sm:py-4">
 
@@ -141,7 +139,7 @@ const Navbar = () => {
                             <NavLink
                                 to="/"
                                 className={({ isActive }) =>
-                                    isActive ? 'text-[1rem] flex items-center mr-6 font-semibold text-[#1b206b] bg-white px-4 py-1 rounded-lg' : 'text-[1rem] flex items-center mr-6 font-semibold text-white'
+                                    isActive ? 'text-[1rem] flex items-center mr-6 font-semibold text-white bg-primary px-4 py-1 rounded-lg' : 'text-[1rem] flex items-center mr-6 font-semibold text-black'
                                 }
                             >
                                 Home
@@ -171,35 +169,18 @@ const Navbar = () => {
                             {
                                 user && user?.email ? (
                                     <>
-                                        <div className="dropdown dropdown-bottom py-1">
-                                            <div tabIndex={0} role="button" className="bg-white text-secondary px-4 rounded-lg mx-4 py-1">My Profile</div>
-                                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                                <li><Link to={'/add_volunteer_need'}>Add Volunteer need Post</Link></li>
-                                                <li><Link to={'/manage_my_post'}>Manage My Posts</Link></li>
-                                            </ul>
-                                        </div>
 
-
-
-
-                                        <div className="dropdown dropdown-hover">
-                                            <div tabIndex={0} role="button" className=" m-1">
-                                                <Link data-tooltip-id="my-tooltip" data-tooltip-content={user && user?.displayName}>
-                                                    <div className="bg-white border w-[60px] h-[60px] p-1 rounded-full mr-4">
-                                                        <img className="object-cover h-full w-full rounded-full" src={user?.photoURL} alt="" />
-                                                    </div>
-                                                </Link>
+                                        <Link data-tooltip-id="my-tooltip" data-tooltip-content={user && user?.displayName}>
+                                            <div className="bg-white border w-[60px] h-[60px] p-1 rounded-full mr-4">
+                                                <img className="object-cover h-full w-full rounded-full" src={user?.photoURL} alt="" />
                                             </div>
-                                            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                                <li><a> <button onClick={handleLogOut}>
+                                        </Link>
 
-                                                    Log Out
-
-                                                </button></a></li>
-
-                                            </ul>
-                                        </div>
-
+                                        <Link onClick={handleLogOut}>
+                                            <div className="bg-primary text-white border p-2 px-4 rounded-full mr-4 relative">
+                                                <p>LogOut</p>
+                                            </div>
+                                        </Link>
 
 
 
@@ -214,7 +195,7 @@ const Navbar = () => {
                                     (
                                         <>
                                             <Link to={'/login'}>
-                                                <div className="bg-white border p-2 px-4 rounded-full mr-4 relative">
+                                                <div className="bg-primary text-white border p-2 px-4 rounded-full mr-4 relative">
                                                     <p>Login</p>
                                                 </div>
                                             </Link>

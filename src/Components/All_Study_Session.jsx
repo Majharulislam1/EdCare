@@ -1,21 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import { useContext } from "react";
-import { AuthContext } from "./Authentication";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
+ 
+import useAllSession from "../Hooks/useAllSession";
 
 
 const All_Study_Session = () => {
+ 
+    const [isPending,All_session] = useAllSession();
+  
 
-    const { user } = useContext(AuthContext);
-    const axiosPublic = useAxiosPublic();
-
-    const { isPending, data: All_session = [] } = useQuery({
-        queryKey: ['all_session', user?.email],
-        queryFn: async () => {
-            const res = await axiosPublic.get(`/all_sessions/${user.email}`);
-            return res.data;
-        }
-    })
+   
 
     if (isPending) return <p>Loading</p>
 
@@ -56,10 +48,10 @@ const All_Study_Session = () => {
                                                 items?.status === 'pending' && <span className="bg-yellow-100 font-bold text-yellow-900 py-1 px-2 rounded-full text-xs">Pending</span>
                                             }
                                             {
-                                                items?.status === 'approve' && <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Approved</span>
+                                                items?.status === 'approved' && <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Approved</span>
                                             }
                                             {
-                                                items?.status === 'reject' && <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Rejected</span>
+                                                items?.status === 'rejected' && <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Rejected</span>
                                             }
                                             
                                         </td>

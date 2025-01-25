@@ -2,6 +2,7 @@ import { MdCreateNewFolder } from "react-icons/md";
 import { CiViewList } from "react-icons/ci";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { NavLink, Outlet } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
 
 
 const Dashboard = () => {
@@ -58,6 +59,13 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <NavLink to={'/'} 
+                            className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" :'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none' } >
+                                <FaHome className="text-2xl mx-2" />
+                                Home
+                             
+                        </NavLink>
 
                     </nav>
                 </div>

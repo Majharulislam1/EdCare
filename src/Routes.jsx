@@ -10,6 +10,9 @@ import Login from "./Components/Login";
 import Dashboard from "./Components/Dashboard";
 import Create_study_session from "./Components/Create_study_session";
 import All_Study_Session from "./Components/All_Study_Session";
+import Upload_Materials from "./Components/Upload_Materials";
+import Upload_Materials_info from "./Components/Upload_Materials_info";
+import View_all_materials from "./Components/View_all_materials";
 
   const router = createBrowserRouter([
     {
@@ -41,11 +44,15 @@ import All_Study_Session from "./Components/All_Study_Session";
         },
         {
           path:'upload_materials',
-          element:<p>upload Materials</p>
+          element:<Upload_Materials></Upload_Materials>
+        },
+        {
+          path:'upload_materials/:id',
+          element:<Upload_Materials_info></Upload_Materials_info>
         },
         {
           path:'all_materials',
-          element:<p>all materials</p>
+          element:<View_all_materials></View_all_materials>
         }
       ]
     }

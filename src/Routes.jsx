@@ -13,6 +13,7 @@ import All_Study_Session from "./Components/All_Study_Session";
 import Upload_Materials from "./Components/Upload_Materials";
 import Upload_Materials_info from "./Components/Upload_Materials_info";
 import View_all_materials from "./Components/View_all_materials";
+import Update_Materials from "./Components/Update_Materials";
 
   const router = createBrowserRouter([
     {
@@ -53,6 +54,10 @@ import View_all_materials from "./Components/View_all_materials";
         {
           path:'all_materials',
           element:<View_all_materials></View_all_materials>
+        },
+        {
+          path:'update_materials/:id',
+          element:<Update_Materials></Update_Materials>
         }
       ]
     }

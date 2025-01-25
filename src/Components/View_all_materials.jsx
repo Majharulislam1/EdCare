@@ -2,6 +2,8 @@ import { useContext } from "react";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { AuthContext } from "./Authentication";
 import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 
@@ -13,12 +15,47 @@ const View_all_materials = () => {
     const { user } = useContext(AuthContext);
 
     const { isPending, data: All_Materials = [], refetch } = useQuery({
-        queryKey: ['all_session', user?.email],
+        queryKey: ['all_materials_session', user?.email],
         queryFn: async () => {
             const res = await axiosPublic.get(`/all_materials/${user.email}`);
             return res.data;
         }
     })
+
+
+    const handleDelete = (_id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                fetch(`http://localhost:3000/delete_materials/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount === 1) {
+                            Swal.fire({
+                                title: "Successfully Deleted!",
+                                text: "Session Materials has been deleted.",
+                                icon: "success"
+                            });
+                            refetch();
+
+
+                        }
+                    });
+            }
+        })
+    }
+
 
     if (isPending) return <p>Loading</p>;
 
@@ -59,10 +96,11 @@ const View_all_materials = () => {
                                         <td className="py-4 px-6 border-b border-gray-200">
 
 
-                                            <span className="px-2 inline-flex text-xs mx-2 leading-5 font-semibold rounded-full bg-green-100 text-green-800">update</span>
+                                            <Link to={`/dashboard/update_materials/${items?._id}`}>
+                                            <button className="px-2 inline-flex text-xs mx-2 leading-5 font-semibold rounded-full bg-green-100 text-green-800">update</button> </Link>
 
 
-                                            <span className="px-2 inline-flex mx-2 text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Delete</span>
+                                            <button onClick={() => handleDelete(items._id)} className="px-2 inline-flex mx-2 text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Delete</button>
 
 
                                         </td>

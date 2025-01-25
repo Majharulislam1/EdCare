@@ -33,13 +33,13 @@ const Create_study_session = () => {
 
 
 
-        const value = { cover_img, session_title, tutor_name, tutor_email, session_duration, reg_fee, description, reg_start_date, reg_end_date, classStart, classEnd,status:'pending' }
+        const value = { cover_img, session_title, tutor_name, tutor_email, session_duration, reg_fee, description, reg_start_date, reg_end_date, classStart, classEnd, status: 'pending' }
 
         axiosPublic.post('/create_session', value)
             .then(res => {
-                 
+
                 if (res.data.insertedId) {
-                     
+
                     Swal.fire({
                         position: "center",
                         icon: "success",

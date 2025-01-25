@@ -14,6 +14,9 @@ import Upload_Materials from "./Components/Upload_Materials";
 import Upload_Materials_info from "./Components/Upload_Materials_info";
 import View_all_materials from "./Components/View_all_materials";
 import Update_Materials from "./Components/Update_Materials";
+import Create_notes from "./Components/Create_notes";
+import Manage_notes from "./Components/Manage_notes";
+import Update_Notes from "./Components/Update_Notes";
 
   const router = createBrowserRouter([
     {
@@ -65,15 +68,19 @@ import Update_Materials from "./Components/Update_Materials";
         ,
         {
            path:'create_note',
-           element:<p>Create note</p>
+           element:<Create_notes></Create_notes>
         }
         ,{
            path:'manage_notes',
-           element:<p>mange notes</p>
+           element:<Manage_notes></Manage_notes>
         },
         {
            path:'study_materials',
            element:<p>Study Materials</p>
+        },
+        {
+           path:'update_note/:id',
+           element:<Update_Notes></Update_Notes>
         }
       ]
     }

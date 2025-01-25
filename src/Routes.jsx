@@ -58,6 +58,22 @@ import Update_Materials from "./Components/Update_Materials";
         {
           path:'update_materials/:id',
           element:<Update_Materials></Update_Materials>
+        },{
+           path:'view_booked_session',
+           element:<p>view booked session</p>
+        }
+        ,
+        {
+           path:'create_note',
+           element:<p>Create note</p>
+        }
+        ,{
+           path:'manage_notes',
+           element:<p>mange notes</p>
+        },
+        {
+           path:'study_materials',
+           element:<p>Study Materials</p>
         }
       ]
     }

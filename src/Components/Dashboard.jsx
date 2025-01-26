@@ -7,11 +7,13 @@ import { IoBookmarksOutline } from "react-icons/io5";
 import { LuNotebookPen } from "react-icons/lu";
 import { MdOutlineManageHistory } from "react-icons/md";
 import { IoBookOutline } from "react-icons/io5";
+import { FiUsers } from "react-icons/fi";
+import { GoChecklist } from "react-icons/go";
 
 
 const Dashboard = () => {
 
-    const userRole = 'student';
+    const userRole = 'admin';
 
     return (
         <div>
@@ -87,6 +89,39 @@ const Dashboard = () => {
 
                             </>
                         }
+
+                        {
+                            userRole === 'admin' && <>
+
+                                <NavLink to={'view_booked_session'}
+                                    className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                    
+
+                                    <FiUsers className="text-2xl mx-2" />
+                                    View All User
+                                </NavLink>
+
+                                <NavLink to={'create_note'}
+                                    className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                    <LuNotebookPen className="text-2xl mx-2" />
+                                    View all study session
+                                </NavLink>
+
+
+
+                                <NavLink to={'manage_notes'}
+                                    className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                    <GoChecklist className="text-2xl mx-2" />
+                                    View all materials
+                                    
+
+                                </NavLink>
+
+
+
+                            </>
+                        }
+
 
 
                         <div role="button" tabIndex="0" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">

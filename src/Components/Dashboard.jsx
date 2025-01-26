@@ -93,7 +93,7 @@ const Dashboard = () => {
                         {
                             userRole === 'admin' && <>
 
-                                <NavLink to={'view_booked_session'}
+                                <NavLink to={'view_all_user'}
                                     className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                     
 
@@ -101,7 +101,7 @@ const Dashboard = () => {
                                     View All User
                                 </NavLink>
 
-                                <NavLink to={'create_note'}
+                                <NavLink to={'view_all_study_session'}
                                     className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                     <LuNotebookPen className="text-2xl mx-2" />
                                     View all study session
@@ -109,7 +109,7 @@ const Dashboard = () => {
 
 
 
-                                <NavLink to={'manage_notes'}
+                                <NavLink to={'view_all_materials'}
                                     className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                     <GoChecklist className="text-2xl mx-2" />
                                     View all materials

@@ -23,6 +23,7 @@ import Booked_Session_details from "./Components/Booked_Session_details";
 import Review_booked_session from "./Components/Review_booked_session";
 import Study_Materials from "./Components/Study_Materials";
 import Download_materials from "./Components/Download_materials";
+import View_all_user from "./Components/View_all_user";
 
   const router = createBrowserRouter([
     {
@@ -103,6 +104,21 @@ import Download_materials from "./Components/Download_materials";
         {
            path:'update_note/:id',
            element:<Update_Notes></Update_Notes>
+        },
+
+        // admin routes 
+
+        {
+           path:'view_all_user',
+           element:<View_all_user></View_all_user>
+        },
+        {
+          path:'view_all_study_session',
+          element:<p>view all study session</p>
+        },
+        {
+          path:'view_all_materials',
+          element:<p>view all materials</p>
         }
       ]
     }

@@ -1,28 +1,28 @@
-import { useEffect } from "react";
-import { useState } from "react";
+ 
 import Session_home_card from "./Session_home_card";
+ 
+ 
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 
 const Study_session_home = () => {
 
-    const [session, setSession] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const axiosPublic = useAxiosPublic();
+     
 
-    useEffect(() => {
-        fetch('/public/study_session.json')
-            .then(res => res.json())
-            .then(data => {
-                setSession(data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            });
-    }, [])
+    const { isPending, data: All_session = [] } = useQuery({
+        queryKey: ['all_session_home'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/all_session_home`);
+            return res.data;
+        }
+    })
 
-    if (loading) return <p>Loading</p>
+   if(isPending) return <p>Loading</p>;
 
-
+    
+    
 
     return (
         <div>
@@ -38,7 +38,7 @@ const Study_session_home = () => {
             <div className="w-4/5 mx-auto ">
                 <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 sm:grid-cols-1 mb-16">
                     {
-                        session.slice(1,7)?.map(items => <Session_home_card key={items.id} sessions={items}></Session_home_card>)
+                        All_session?.map(items => <Session_home_card key={items._id} sessions={items}></Session_home_card>)
                     }
                 </div>
             </div>

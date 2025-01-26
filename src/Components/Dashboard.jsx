@@ -77,8 +77,6 @@ const Dashboard = () => {
                                     className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                     <MdOutlineManageHistory className="text-2xl mx-2" />
                                     Manage notes
-
-
                                 </NavLink>
 
                                 <NavLink to={'study_materials'}

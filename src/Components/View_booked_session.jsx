@@ -11,7 +11,7 @@ const View_booked_session = () => {
     const axiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
 
-    const { isPending, data: All_booked_session = [], refetch } = useQuery({
+    const { isPending, data: All_booked_session = [],  } = useQuery({
         queryKey: ['all_booked_session', user?.email],
         queryFn: async () => {
             const res = await axiosPublic.get(`/all_booked_session/${user.email}`);
@@ -60,11 +60,11 @@ const View_booked_session = () => {
                                             <Link to={`/dashboard/booked_Details/${items?._id}`}>
                                                 <button className="px-2 inline-flex text-xs mx-2 leading-5 font-semibold rounded-full bg-green-100 text-green-800">Details</button> </Link>
 
-
+                                                <Link to={`/dashboard/review_session/${items?._id}`}>
                                             <button className="px-2 inline-flex mx-2 text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                                                 review
                                             </button>
-
+                                             </Link>
 
                                         </td>
                                     </tr>

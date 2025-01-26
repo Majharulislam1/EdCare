@@ -1,37 +1,48 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
- 
 import { useQuery } from "@tanstack/react-query";
-import { GoArrowLeft } from "react-icons/go";
-import moment from "moment";
 
 
 
-const Booked_Session_details = () => {
+const Download_materials = () => {
     const { id } = useParams();
-
+      
     const axiosPublic = useAxiosPublic();
-    const navigate = useNavigate();
+    
     
 
-
     const { isPending, data: session_detail = [] } = useQuery({
-        queryKey: ['all_session_home',id],
+        queryKey: ['materials',id],
         queryFn: async () => {
             const res = await axiosPublic.get(`/booked_details/${id}`);
             return res.data;
         }
     })
 
-    const RegistrationStartDate = moment(session_detail?.reg_start_date).format("MMM Do YY");
-    const RegistrationEndDate = moment(session_detail?.reg_end_date).format("MMM Do YY");
-    const classStartDate = moment(session_detail?.classStart).format("MMM Do YY");
-    const classEndDate = moment(session_detail?.classEnd).format("MMM Do YY");
+    const session_ids =  session_detail.session_id;
 
-    if(isPending) return <p>Loading..</p>
+    const {  data: Materials = [] } = useQuery({
+        queryKey: ['download_materials',session_ids],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/session_materials/${session_ids}`);
+            return res.data;
+        }
+    })
+
+    if(isPending) return <p>Loading</p>;
+
+
+   console.log(Materials);
+    
+
 
     return (
         <div>
+            <div className="relative w-full lg:h-36 md:h-36 sm:h-36 bg-primary  flex items-center justify-center">
+                <h1 className="text-white text-3xl font-bold">Download Materials</h1>
+            </div>
+
+
             <div>
                 <div className="lg:w-2/4 md:w-2/4 sm:w-4/5 mx-auto">
                     <div className="flex justify-center items-center min-h-screen w-full p-4">
@@ -39,7 +50,9 @@ const Booked_Session_details = () => {
                             className="  w-full bg-white rounded-xl shadow-2xl overflow-hidden ">
                             <div className="relative">
                                 <img className="w-full h-64 object-cover" src={session_detail?.cover_img} alt="Nature scene" />
-                                
+                                <div className="absolute top-0 right-0 bg-teal-500 text-white px-2 py-1 m-2 rounded-md text-sm font-semibold">
+                                    {session_detail?.status}
+                                </div>
                             </div>
                             <div className="p-6">
                                 <h2 className="text-2xl font-bold mb-2 text-gray-800">{session_detail?.session_title
@@ -56,13 +69,12 @@ const Booked_Session_details = () => {
                                     <p className="text-paragraph font-bold">Registration fee : {session_detail?.reg_fee}</p>
                                     <p className="text-paragraph font-bold">Session duration : <span className="bg-primary text-white px-3 rounded-full">{session_detail?.
                                         session_duration} hr</span></p>
-                                    
+                                    <p className="text-paragraph font-bold">Rating: </p>
                                 </div>
                                 <div className="flex justify-between items-center">
 
-                                    <button onClick={()=> navigate(-1)} className="px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md">
-                                  
-                                    <GoArrowLeft className="text-2xl" />
+                                    <button onClick={handleBookedSession} className="px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md">
+                                        Book Now
                                     </button>
                                 </div>
                             </div>
@@ -74,4 +86,4 @@ const Booked_Session_details = () => {
     );
 };
 
-export default Booked_Session_details;
+export default Download_materials;

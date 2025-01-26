@@ -20,6 +20,9 @@ import Update_Notes from "./Components/Update_Notes";
 import Session_details from "./Components/Session_details";
 import View_booked_session from "./Components/View_booked_session";
 import Booked_Session_details from "./Components/Booked_Session_details";
+import Review_booked_session from "./Components/Review_booked_session";
+import Study_Materials from "./Components/Study_Materials";
+import Download_materials from "./Components/Download_materials";
 
   const router = createBrowserRouter([
     {
@@ -80,6 +83,10 @@ import Booked_Session_details from "./Components/Booked_Session_details";
         {
            path:'booked_Details/:id',
            element:<Booked_Session_details></Booked_Session_details>
+        },
+        {
+           path:'review_session/:id',
+           element:<Review_booked_session></Review_booked_session>
         }
         ,{
            path:'manage_notes',
@@ -87,7 +94,11 @@ import Booked_Session_details from "./Components/Booked_Session_details";
         },
         {
            path:'study_materials',
-           element:<p>Study Materials</p>
+           element:<Study_Materials></Study_Materials>
+        },
+        {
+          path:'download_materials/:id',
+          element:<Download_materials></Download_materials>
         },
         {
            path:'update_note/:id',

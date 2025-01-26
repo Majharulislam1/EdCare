@@ -13,7 +13,7 @@ const View_all_user = () => {
 
 
 
-    const { isPending, data: user = [],refetch } = useQuery({
+    const {   data: user = [],refetch } = useQuery({
         queryKey: ['searchUsers', search],
         queryFn: async () => {
             if (search) {

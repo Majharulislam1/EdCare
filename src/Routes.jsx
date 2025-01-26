@@ -24,6 +24,7 @@ import Review_booked_session from "./Components/Review_booked_session";
 import Study_Materials from "./Components/Study_Materials";
 import Download_materials from "./Components/Download_materials";
 import View_all_user from "./Components/View_all_user";
+import View_All_Study_Session from "./Components/View_All_Study_Session";
 
   const router = createBrowserRouter([
     {
@@ -114,7 +115,7 @@ import View_all_user from "./Components/View_all_user";
         },
         {
           path:'view_all_study_session',
-          element:<p>view all study session</p>
+          element:<View_All_Study_Session></View_All_Study_Session>
         },
         {
           path:'view_all_materials',

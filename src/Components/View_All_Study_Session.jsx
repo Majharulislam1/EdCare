@@ -3,6 +3,7 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { AuthContext } from "./Authentication";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 
@@ -12,9 +13,22 @@ const View_All_Study_Session = () => {
     const { user } = useContext(AuthContext);
 
     const [isOpen, setIsOpen] = useState(false);
+
     const [paid_btn, setPaid_btn] = useState(false);
     const [selectedSession, setSelectedSession] = useState(null);
 
+    const [isOpenReject, setIsOpenReject] = useState(false);
+    const [selectedSessionReject, setSelectedSessionReject] = useState(null);
+
+    const openRejectModal = (session) => {
+        setSelectedSessionReject(session);
+        setIsOpenReject(true)
+    }
+
+    const closeRejectModal = () => {
+        setIsOpenReject(false);
+        setSelectedSessionReject(null);
+    }
 
     const openModal = (session) => {
         setSelectedSession(session);
@@ -27,7 +41,7 @@ const View_All_Study_Session = () => {
         setPaid_btn(false);
     };
 
-    const { isPending, data: All_session = [],refetch } = useQuery({
+    const { isPending, data: All_session = [], refetch } = useQuery({
         queryKey: ['all_booked_session2', user?.email],
         queryFn: async () => {
             const res = await axiosPublic.get(`/view_all_study_session`);
@@ -40,7 +54,7 @@ const View_All_Study_Session = () => {
         e.preventDefault();
 
         const fee = e.target.registration_fee.value;
-        const value = {reg_fee:fee,status:'approved'};
+        const value = { reg_fee: fee, status: 'approved' };
 
         axiosPublic.put(`/update_registration_fee/${id}`, value)
             .then(res => {
@@ -63,8 +77,8 @@ const View_All_Study_Session = () => {
 
     }
 
-    const handleAddRegistration_Free = (id)=>{
-        const value = {reg_fee:0,status:'approved'};
+    const handleAddRegistration_Free = (id) => {
+        const value = { reg_fee: 0, status: 'approved' };
 
         axiosPublic.put(`/update_registration_fee/${id}`, value)
             .then(res => {
@@ -84,6 +98,48 @@ const View_All_Study_Session = () => {
 
                 }
             })
+    }
+
+    const handleReject = (e, id, email) => {
+        e.preventDefault();
+
+        const reject_reason = e.target.reject_reason.value;
+        const feedback = e.target.feedback.value;
+        const value = { reject_reason, feedback, tutor_email: email };
+
+        axiosPublic.post('/reject_session', value)
+            .then(res => {
+
+                if (res.data.insertedId) {
+
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Successfully Rejected",
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    e.target.reset();
+                    closeRejectModal();
+                }
+            })
+
+        const value2 = { reg_fee: 0, status: 'rejected' };
+
+        axiosPublic.put(`/update_registration_fee/${id}`, value2)
+            .then(res => {
+
+                if (res.data.modifiedCount === 1) {
+
+
+
+                    refetch();
+                    closeModal();
+
+                }
+            })
+
+
     }
 
 
@@ -123,14 +179,16 @@ const View_All_Study_Session = () => {
                                 </div>
                                 <div>
 
-                                    {session.status === 'approved' ? (
+                                    {session.status === 'approved' && (
                                         <div className="flex space-x-2">
-                                            <button
-                                                className="text-white flex items-center text-md font-semibold bg-primary py-2 px-4 rounded-lg shadow-md hover:shadow-lg "
+                                            <Link to={`/dashboard/update_session/${session._id}`}>
+                                                <button
+                                                    className="text-white flex items-center text-md font-semibold bg-primary py-2 px-4 rounded-lg shadow-md hover:shadow-lg "
 
-                                            >
-                                                Update
-                                            </button>
+                                                >
+                                                    Update
+                                                </button>
+                                            </Link>
                                             <button
                                                 className="text-white flex items-center text-md font-semibold bg-primary py-2 px-4 rounded-lg shadow-md hover:shadow-lg "
 
@@ -138,23 +196,31 @@ const View_All_Study_Session = () => {
                                                 Delete
                                             </button>
                                         </div>
-                                    ) : (
-                                        <div className="flex space-x-2">
+                                    )}
+                                    {
+                                        session.status === 'pending' && (<div className="flex space-x-2">
                                             <button onClick={() => openModal(session)} className="text-white flex items-center text-md font-semibold bg-primary py-2 px-4 rounded-lg shadow-md hover:shadow-lg ">Approved</button>
-                                            <button className="text-white flex items-center text-md font-semibold bg-primary py-2 px-4 rounded-lg shadow-md hover:shadow-lg ">Rejected</button>
-                                        </div>
-                                    )
+
+                                            <button onClick={() => openRejectModal(session)} className="text-white flex items-center text-md font-semibold bg-primary py-2 px-4 rounded-lg shadow-md hover:shadow-lg ">Rejected</button>
+                                        </div>)
                                     }
+
+                                    {
+                                        session.status === 'rejected' && <button onClick={() => openModal(session)} className="text-white flex items-center text-md font-semibold bg-primary py-2 px-4 rounded-lg shadow-md hover:shadow-lg ">Approved</button>
+                                    }
+
+
                                 </div>
                             </div>
                             {/* modal body  */}
+
                             {isOpen && selectedSession?._id === session._id && (
                                 <dialog open className="modal">
                                     <div className="modal-box">
                                         <h3 className="font-bold text-lg">Is the session free or paid?</h3>
                                         <div className="py-4 flex">
 
-                                            <button onClick={()=>handleAddRegistration_Free(selectedSession._id)}
+                                            <button onClick={() => handleAddRegistration_Free(selectedSession._id)}
                                                 className="text-white mx-4 flex items-center text-md font-semibold bg-primary py-1 px-4 rounded-lg shadow-md hover:shadow-lg"
                                             >
                                                 Free
@@ -203,6 +269,69 @@ const View_All_Study_Session = () => {
                                     </div>
                                 </dialog>
                             )}
+
+                            {/* Reject  modal  */}
+
+                            {isOpenReject && selectedSessionReject?._id === session._id && (
+                                <dialog open className="modal">
+                                    <div className="modal-box">
+                                        <h3 className="font-bold text-lg text-center" >Reject issue</h3>
+
+
+                                        <form onSubmit={(e) => handleReject(e, selectedSessionReject._id, session?.tutor_email)}>
+                                            <div>
+                                                <label
+                                                    htmlFor="reject_reason"
+                                                    className="text-sm font-medium text-gray-900 block mb-2"
+                                                >
+                                                    Rejection reason:
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="reject_reason"
+                                                    id="reject_reason"
+                                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                                    placeholder="Rejection reason"
+                                                    required
+                                                />
+                                            </div>
+                                            <div>
+                                                <label
+                                                    htmlFor="feedback"
+                                                    className="text-sm font-medium text-gray-900 block mb-2"
+                                                >
+                                                    Feedback:
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    name="feedback"
+                                                    id="feedback"
+                                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                                    placeholder="Rejection reason"
+                                                    required
+                                                />
+                                            </div>
+
+                                            <button className="text-white my-4 flex items-center text-md font-semibold bg-primary py-1 px-4 rounded-lg shadow-md hover:shadow-lg">
+                                                Submit
+                                            </button>
+                                        </form>
+
+
+                                        <div className="modal-action">
+                                            <button
+                                                className="btn btn-sm bg-red-600 text-white"
+                                                onClick={closeRejectModal}
+                                            >
+                                                Close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </dialog>
+                            )}
+
+
+
                         </div>
                     ))
                 }

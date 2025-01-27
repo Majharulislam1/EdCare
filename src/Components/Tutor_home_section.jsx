@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
 import Tutor_home_card from "./Tutor_home_card";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
  
 
 const Tutor_home_section = () => {
 
 
-     const [tutor, setTutor] = useState([]);
-        const [loading, setLoading] = useState(true);
-    
-        useEffect(() => {
-            fetch('/public/Tutor.json')
-                .then(res => res.json())
-                .then(data => {
-                    setTutor(data);
-                    setLoading(false);
-                })
-                .catch(() => {
-                    setLoading(false);
-                });
-        }, [])
-    
-        if (loading) return <p>Loading</p>
+    const axiosPublic = useAxiosPublic();
+     
+
+    const { isPending, data: All_Tutor = [] } = useQuery({
+        queryKey: ['all_tutor'],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/all_tutor`);
+            return res.data;
+        }
+    })
+
+   if(isPending) return <p>Loading</p>;
         
+    
          
 
     return (
@@ -39,7 +38,7 @@ const Tutor_home_section = () => {
             <div className="w-4/5 mx-auto ">
                 <div className="grid lg:grid-cols-4 mt-10 md:grid-cols-2 gap-6 sm:grid-cols-1 mb-16">
                     {
-                        tutor.slice(1,7)?.map(items => <Tutor_home_card key={items.name} tutors={items}></Tutor_home_card>)
+                       All_Tutor.slice(0,7)?.map(items => <Tutor_home_card key={items.name} tutors={items}></Tutor_home_card>)
                     }
                 </div>
             </div>

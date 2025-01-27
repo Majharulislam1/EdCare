@@ -27,6 +27,7 @@ import View_all_user from "./Components/View_all_user";
 import View_All_Study_Session from "./Components/View_All_Study_Session";
 import Update_Session from "./Components/Update_Session";
 import View_All_Materials_admin from "./Components/View_All_Materials_admin";
+import PrivateRoute from "./Components/PrivateRoute";
 
   const router = createBrowserRouter([
     {
@@ -45,7 +46,8 @@ import View_All_Materials_admin from "./Components/View_All_Materials_admin";
       },
       {
         path:'session_details/:id',
-        element:<Session_details></Session_details>
+        
+        element: <PrivateRoute> <Session_details></Session_details></PrivateRoute>
       }
     ]
     },

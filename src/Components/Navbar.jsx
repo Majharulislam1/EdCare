@@ -22,12 +22,12 @@ const Navbar = () => {
 
     const [menu, setMenu] = useState(true);
 
- 
+
 
 
     return (
         <div className="sm:-mb-1">
-            
+
 
 
             <div className="bg-white">
@@ -141,14 +141,7 @@ const Navbar = () => {
                                 Home
                             </NavLink>
 
-                            <NavLink
-                                to='/all_volunteer'
-                                className={({ isActive }) =>
-                                    isActive ? 'text-[1rem] flex items-center mr-6 font-semibold text-[#1b206b] bg-white px-4 py-1 rounded-lg' : 'text-[1rem] flex items-center mr-6 font-semibold text-white'
-                                }
-                            >
-                                All volunteer Need posts
-                            </NavLink>
+
 
 
 
@@ -165,6 +158,11 @@ const Navbar = () => {
                             {
                                 user && user?.email ? (
                                     <>
+                                        <Link to={'/dashboard'}>
+                                            <div className="bg-primary text-white border p-2 px-4 rounded-full mr-4 relative">
+                                                <p>Dashboard</p>
+                                            </div>
+                                        </Link>
 
                                         <Link data-tooltip-id="my-tooltip" data-tooltip-content={user && user?.displayName}>
                                             <div className="bg-white border w-[60px] h-[60px] p-1 rounded-full mr-4">
@@ -179,7 +177,13 @@ const Navbar = () => {
                                         </Link>
 
 
-
+                                      
+                                         
+                                        {/* https://i.ibb.co/kqMzRpQ/usman-yousaf-q2q5-Cd-Lu-Wn-I-unsplash.jpg */}
+                                        {/* https://i.ibb.co/YfjsGjG/christian-buehner-DIt-Ylc26z-VI-unsplash.jpg  */}
+                                        {/* https://i.ibb.co/dBYCh2s/jurica-koletic-7-YVZYZe-ITc8-unsplash.jpg  */}
+                                        {/* https://i.ibb.co/MphtKWw/alex-suprun-ZHv-M3-XIOHo-E-unsplash.jpg  */}
+                                        {/* https://i.ibb.co/8KcL09c/photo-1535713875002-d1d0cf377fde.jpg  */}
 
 
 
@@ -192,7 +196,7 @@ const Navbar = () => {
                                         <>
                                             <Link to={'/login'}>
                                                 <div className="bg-primary text-white border p-2 px-4 rounded-full mr-4 relative">
-                                                    <p>Login</p>
+                                                    <p>sign-up</p>
                                                 </div>
                                             </Link>
                                         </>

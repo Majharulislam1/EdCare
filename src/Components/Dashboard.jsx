@@ -1,7 +1,7 @@
 import { MdCreateNewFolder } from "react-icons/md";
 import { CiViewList } from "react-icons/ci";
 import { IoCloudUploadOutline } from "react-icons/io5";
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { IoBookmarksOutline } from "react-icons/io5";
 import { LuNotebookPen } from "react-icons/lu";
@@ -9,11 +9,19 @@ import { MdOutlineManageHistory } from "react-icons/md";
 import { IoBookOutline } from "react-icons/io5";
 import { FiUsers } from "react-icons/fi";
 import { GoChecklist } from "react-icons/go";
+import useUser from "../Hooks/useUser";
+import { useContext } from "react";
+import { AuthContext } from "./Authentication";
+import { MdPowerSettingsNew } from "react-icons/md";
 
 
 const Dashboard = () => {
 
-    const userRole = 'admin';
+    const { user, handleLogOut } = useContext(AuthContext);
+    const [isUser, isPending] = useUser();
+    if (isPending) return <p>Loading</p>;
+    const userRole = isUser[0].role;
+
 
     return (
         <div>
@@ -95,7 +103,7 @@ const Dashboard = () => {
 
                                 <NavLink to={'view_all_user'}
                                     className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
-                                    
+
 
                                     <FiUsers className="text-2xl mx-2" />
                                     View All User
@@ -113,7 +121,7 @@ const Dashboard = () => {
                                     className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                     <GoChecklist className="text-2xl mx-2" />
                                     View all materials
-                                    
+
 
                                 </NavLink>
 
@@ -144,6 +152,16 @@ const Dashboard = () => {
                             Home
 
                         </NavLink>
+
+                        {
+                            user?.email && <Link onClick={handleLogOut}
+                                className={   'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80    '} >
+                                <MdPowerSettingsNew className="text-2xl mx-2" />
+                                LogOut
+                            </Link>
+                        }
+
+
 
                     </nav>
                 </div>

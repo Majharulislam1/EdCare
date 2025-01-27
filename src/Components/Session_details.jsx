@@ -5,6 +5,7 @@ import moment from 'moment';
 import { useContext } from "react";
 import { AuthContext } from "./Authentication";
 import Swal from "sweetalert2";
+import useUser from "../Hooks/useUser";
 
 
 const Session_details = () => {
@@ -23,6 +24,9 @@ const Session_details = () => {
         }
     })
 
+    const [isUser] = useUser();
+     
+    
 
 
     const handleBookedSession = () => {
@@ -70,7 +74,7 @@ const Session_details = () => {
 
     if (isPending) return <p>Loading</p>;
 
-
+    const userRole = isUser[0]?.role;
 
 
 
@@ -113,7 +117,7 @@ const Session_details = () => {
                             </div>
                             <div className="flex justify-between items-center">
 
-                                <button onClick={handleBookedSession} className="px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md">
+                                <button onClick={handleBookedSession} disabled={userRole!=='student'} className="px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md">
                                     Book Now
                                 </button>
                             </div>

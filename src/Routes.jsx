@@ -26,6 +26,7 @@ import Download_materials from "./Components/Download_materials";
 import View_all_user from "./Components/View_all_user";
 import View_All_Study_Session from "./Components/View_All_Study_Session";
 import Update_Session from "./Components/Update_Session";
+import View_All_Materials_admin from "./Components/View_All_Materials_admin";
 
   const router = createBrowserRouter([
     {
@@ -120,7 +121,7 @@ import Update_Session from "./Components/Update_Session";
         },
         {
           path:'view_all_materials',
-          element:<p>view all materials</p>
+          element:<View_All_Materials_admin></View_All_Materials_admin>
         },
         {
           path:'update_session/:id',

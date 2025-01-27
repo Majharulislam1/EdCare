@@ -143,6 +143,40 @@ const View_All_Study_Session = () => {
     }
 
 
+    const handleDeleteSession = (_id) => {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+        
+        
+                        fetch(`http://localhost:3000/delete_session/${_id}`, {
+                            method: 'DELETE'
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.deletedCount === 1) {
+                                    Swal.fire({
+                                        title: "Successfully Deleted!",
+                                        text: "Note has been deleted.",
+                                        icon: "success"
+                                    });
+                                    refetch();
+        
+        
+                                }
+                            });
+                    }
+                })
+            }
+
+
 
     if (isPending) return <p>Loading</p>;
 
@@ -189,7 +223,7 @@ const View_All_Study_Session = () => {
                                                     Update
                                                 </button>
                                             </Link>
-                                            <button
+                                            <button onClick={()=>handleDeleteSession(session._id)}
                                                 className="text-white flex items-center text-md font-semibold bg-primary py-2 px-4 rounded-lg shadow-md hover:shadow-lg "
 
                                             >

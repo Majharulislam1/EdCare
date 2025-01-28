@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import moment from 'moment';
@@ -14,8 +14,7 @@ const Session_details = () => {
 
     const axiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
-
-
+    const navigate = useNavigate();
     const { isPending, data: session_detail = [] } = useQuery({
         queryKey: ['all_session_home'],
         queryFn: async () => {
@@ -25,8 +24,8 @@ const Session_details = () => {
     })
 
     const [isUser] = useUser();
-     
-    
+
+
 
 
     const handleBookedSession = () => {
@@ -50,9 +49,9 @@ const Session_details = () => {
 
 
 
-       
 
-         
+
+
 
         axiosPublic.post('/booked_session', value)
             .then(res => {
@@ -66,7 +65,7 @@ const Session_details = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-
+                    navigate('/dashboard/view_booked_session');
                 }
             })
     }
@@ -74,7 +73,7 @@ const Session_details = () => {
 
     if (isPending) return <p>Loading</p>;
 
-    const userRole = isUser[0]?.role;
+    const userRole = isUser?.[0]?.role;
 
 
 
@@ -110,16 +109,25 @@ const Session_details = () => {
                                 <p className="text-paragraph font-bold">Registration end date : {RegistrationEndDate}</p>
                                 <p className="text-paragraph font-bold">Class start time : {classStartDate}</p>
                                 <p className="text-paragraph font-bold">Class end date : {classEndDate}</p>
-                                <p className="text-paragraph font-bold">Registration fee : {session_detail?.reg_fee}</p>
+                                <p className="text-paragraph font-bold">Registration fee : $ {session_detail?.reg_fee}</p>
                                 <p className="text-paragraph font-bold">Session duration : <span className="bg-primary text-white px-3 rounded-full">{session_detail?.
                                     session_duration} hr</span></p>
                                 <p className="text-paragraph font-bold">Rating: </p>
                             </div>
                             <div className="flex justify-between items-center">
 
-                                <button onClick={handleBookedSession} disabled={userRole!=='student'} className="px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md">
-                                    Book Now
-                                </button>
+                                {
+                                    parseInt(session_detail?.reg_fee) === 0 ? <button onClick={handleBookedSession} disabled={userRole !== 'student'} className="px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md">
+                                        Book Now
+                                    </button> : <Link to={`/payment/${id}`}>
+                                        <button disabled={userRole !== 'student'} className="px-4 py-2 bg-primary text-white font-semibold rounded-lg shadow-md">
+                                            Book Now
+                                        </button>
+                                    </Link>
+                                }
+
+
+
                             </div>
                         </div>
                     </div>

@@ -3,12 +3,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
  
 const firebaseConfig = {
-  apiKey: "AIzaSyBk6AD7pVWSUulXrAiDpwLnouAnXJqgLH8",
-  authDomain: "edcare-ae4c3.firebaseapp.com",
-  projectId: "edcare-ae4c3",
-  storageBucket: "edcare-ae4c3.firebasestorage.app",
-  messagingSenderId: "961216847074",
-  appId: "1:961216847074:web:0e43d0c70eb95ff4e4d2bb"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID
 };
 
  

@@ -7,18 +7,18 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const All_Study_Session = () => {
 
-    const [isPending, All_session,refetch] = useAllSession();
+    const [isPending, All_session, refetch] = useAllSession();
     const axiosPublic = useAxiosPublic();
 
-const navigate=useNavigate();
+    const navigate = useNavigate();
 
 
-    if (isPending) return <p>Loading</p>
+
 
 
     const handleRequest = (_id) => {
 
-        const value = {status:'pending'};
+        const value = { status: 'pending' };
         axiosPublic.put(`/session_request/${_id}`, value)
             .then(res => {
 
@@ -31,13 +31,22 @@ const navigate=useNavigate();
                         showConfirmButton: false,
                         timer: 2000
                     });
-                     
+
                     refetch();
                     navigate('/dashboard/all_study_session');
                 }
             })
 
 
+
+    }
+
+    if (isPending) return
+    {
+
+        <div className="flex justify-center py-8">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+        </div>
 
     }
 

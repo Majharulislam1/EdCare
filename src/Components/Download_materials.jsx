@@ -32,7 +32,14 @@ const Download_materials = () => {
         enabled: !!session_ids,
     })
 
-    if(isPending) return <p>Loading</p>;
+    if (isPending) return
+    {
+
+        <div className="flex justify-center py-8">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+        </div>
+
+    }
 
 
     

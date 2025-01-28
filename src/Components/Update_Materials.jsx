@@ -70,7 +70,14 @@ const Update_Materials = () => {
     }
 
 
-    if (isPending) return <p>loading</p>;
+    if (isPending) return
+    {
+
+        <div className="flex justify-center py-8">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+        </div>
+
+    }
 
 
 

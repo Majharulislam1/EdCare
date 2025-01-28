@@ -19,9 +19,16 @@ const Study_session_home = () => {
         }
     })
 
-    if (isPending) return <p>Loading</p>;
+    if (isPending) return
+    {
 
-    // const approved_Session = All_session?.filter(session => session.status==='approved');
+        <div className="flex justify-center py-8">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+        </div>
+
+    }
+
+   
 
 
      

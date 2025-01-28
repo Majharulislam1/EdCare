@@ -31,6 +31,7 @@ import PrivateRoute from "./Components/PrivateRoute";
 import Payment from "./Components/Payment";
 import Reject_Reason from "./Components/Reject_Reason";
 import ErrorPage from "./Components/ErrorPage";
+import All_study_session_user from "./Components/All_study_session_user";
 
   const router = createBrowserRouter([
     {
@@ -40,6 +41,9 @@ import ErrorPage from "./Components/ErrorPage";
       children:[{
          path:'/',
          element:<Home></Home>,
+      },{
+          path:'/all_session_user',
+          element:<All_study_session_user></All_study_session_user>
       }
       ,{
          path:'/registration',

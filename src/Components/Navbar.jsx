@@ -56,6 +56,19 @@ const Navbar = () => {
 
 
                             </p>
+                            <p className="text-[#131313b3] flex justify-center items-center my-3 cursor-pointer font-bold text-center">
+
+                                <NavLink
+                                    to="/all_session_user"
+                                    className={({ isActive }) =>
+                                        isActive ? 'text-[1rem] mr-6 font-semibold text-[#1b206b]' : 'text-[1rem] mr-6 font-semibold text-black'
+                                    }
+                                >
+                                    All Session
+                                </NavLink>
+
+
+                            </p>
 
                              
 
@@ -88,7 +101,7 @@ const Navbar = () => {
                                                 <p className="text-[#131313b3] flex justify-center items-center mb-3 cursor-pointer font-bold text-center">
 
                                                     <NavLink
-                                                        to='/Dashboard'
+                                                        to='/dashboard'
                                                         className={({ isActive }) =>
                                                             isActive ? 'text-[1rem] mx-6 font-semibold text-[#1b206b]' : 'text-[1rem] mx-6 font-semibold text-black'
                                                         }
@@ -132,6 +145,14 @@ const Navbar = () => {
                                 }
                             >
                                 Home
+                            </NavLink>
+                            <NavLink
+                                to="/all_session_user"
+                                className={({ isActive }) =>
+                                    isActive ? 'text-[1rem] flex items-center mr-6 font-semibold text-white bg-primary px-4 py-1 rounded-lg' : 'text-[1rem] flex items-center mr-6 font-semibold text-black'
+                                }
+                            >
+                                All session
                             </NavLink>
 
 

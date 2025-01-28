@@ -34,7 +34,7 @@ const Session_home_card = ({ sessions }) => {
                             <div className="flex justify-between">
                             {
                                 isRegistrationOpen ? <> <button className="mt-6 py-2 px-4 bg-primary text-white font-bold rounded-lg shadow-md hover:shadow-lg transition duration-300">On Going</button> 
-                                <Link to={`session_details/${_id}`}>
+                                <Link to={`/session_details/${_id}`}>
                             <button className="mt-6 py-2 px-4 bg-primary text-white font-bold rounded-lg  transition duration-300">Read More</button>
                             </Link>
                             </> 

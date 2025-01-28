@@ -36,7 +36,7 @@ const View_all_materials = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:3000/delete_materials/${_id}`, {
+                fetch(`https://ed-care-backend.vercel.app/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

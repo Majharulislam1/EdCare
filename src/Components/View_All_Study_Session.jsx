@@ -156,7 +156,7 @@ const View_All_Study_Session = () => {
                     if (result.isConfirmed) {
         
         
-                        fetch(`http://localhost:3000/delete_session/${_id}`, {
+                        fetch(`https://ed-care-backend.vercel.app/${_id}`, {
                             method: 'DELETE'
                         })
                             .then(res => res.json())

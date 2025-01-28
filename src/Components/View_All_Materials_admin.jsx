@@ -32,7 +32,7 @@ const View_All_Materials_admin = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:3000/delete_material/${_id}`, {
+                fetch(`https://ed-care-backend.vercel.app/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

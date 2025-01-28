@@ -33,11 +33,14 @@ const Session_home_card = ({ sessions }) => {
                             <p className="text-gray-700 tracking-wide">{description.slice(1, 100)}</p>
                             <div className="flex justify-between">
                             {
-                                isRegistrationOpen ? <button className="mt-6 py-2 px-4 bg-primary text-white font-bold rounded-lg shadow-md hover:shadow-lg transition duration-300">On Going</button>  : <button className="mt-6 py-2 px-4 bg-primary text-white font-bold rounded-lg  transition duration-300">Closed</button>
-                            }
-                            <Link to={`session_details/${_id}`}>
+                                isRegistrationOpen ? <> <button className="mt-6 py-2 px-4 bg-primary text-white font-bold rounded-lg shadow-md hover:shadow-lg transition duration-300">On Going</button> 
+                                <Link to={`session_details/${_id}`}>
                             <button className="mt-6 py-2 px-4 bg-primary text-white font-bold rounded-lg  transition duration-300">Read More</button>
                             </Link>
+                            </> 
+                                 : <button className="mt-6 py-2 px-4 bg-primary text-white font-bold rounded-lg  transition duration-300">Closed</button>
+                            }
+                            
                             </div>
                         </div>
                         <div className="absolute top-2 right-2 py-2 px-4 bg-primary text-white rounded-lg">

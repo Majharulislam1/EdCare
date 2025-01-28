@@ -29,11 +29,14 @@ import Update_Session from "./Components/Update_Session";
 import View_All_Materials_admin from "./Components/View_All_Materials_admin";
 import PrivateRoute from "./Components/PrivateRoute";
 import Payment from "./Components/Payment";
+import Reject_Reason from "./Components/Reject_Reason";
+import ErrorPage from "./Components/ErrorPage";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element:<Roots></Roots>,
+      errorElement: <ErrorPage />,
       children:[{
          path:'/',
          element:<Home></Home>,
@@ -52,87 +55,93 @@ import Payment from "./Components/Payment";
       },
       {
         path:'payment/:id',
-        element:<Payment></Payment>
+        element:<PrivateRoute>  <Payment></Payment> </PrivateRoute>
       }
     ]
     },
     {
       path:'/dashboard',
-      element:<Dashboard></Dashboard>,
+      element:<PrivateRoute>  <Dashboard></Dashboard>  </PrivateRoute>,
       children:[
         {
           path:'create-study-session',
-          element:<Create_study_session></Create_study_session>
+          element:<PrivateRoute> <Create_study_session></Create_study_session> </PrivateRoute>
         },{
            path:'all_study_session',
-           element:<All_Study_Session></All_Study_Session>
+           element: <PrivateRoute><All_Study_Session></All_Study_Session> </PrivateRoute> 
         },
         {
           path:'upload_materials',
-          element:<Upload_Materials></Upload_Materials>
+          element: <PrivateRoute><Upload_Materials></Upload_Materials></PrivateRoute> 
         },
         {
           path:'upload_materials/:id',
-          element:<Upload_Materials_info></Upload_Materials_info>
+          element:<PrivateRoute>   <Upload_Materials_info></Upload_Materials_info> </PrivateRoute>
         },
         {
           path:'all_materials',
-          element:<View_all_materials></View_all_materials>
+          element: <PrivateRoute>  <View_all_materials></View_all_materials> </PrivateRoute> 
         },
         {
           path:'update_materials/:id',
-          element:<Update_Materials></Update_Materials>
+          element:<PrivateRoute> <Update_Materials></Update_Materials> </PrivateRoute>
         },{
            path:'view_booked_session',
-           element:<View_booked_session></View_booked_session>
+           element: <PrivateRoute> <View_booked_session></View_booked_session> </PrivateRoute>
         }
         ,
         {
            path:'create_note',
-           element:<Create_notes></Create_notes>
+           element: <PrivateRoute> <Create_notes></Create_notes></PrivateRoute>
         },
         {
            path:'booked_Details/:id',
-           element:<Booked_Session_details></Booked_Session_details>
+           element:    <PrivateRoute><Booked_Session_details></Booked_Session_details> </PrivateRoute>
         },
         {
            path:'review_session/:id',
-           element:<Review_booked_session></Review_booked_session>
+           element:  <PrivateRoute><Review_booked_session></Review_booked_session> </PrivateRoute>
         }
         ,{
            path:'manage_notes',
-           element:<Manage_notes></Manage_notes>
+           element: <PrivateRoute><Manage_notes></Manage_notes>  </PrivateRoute>
         },
         {
            path:'study_materials',
-           element:<Study_Materials></Study_Materials>
+           element: <PrivateRoute><Study_Materials></Study_Materials>  </PrivateRoute>
         },
         {
           path:'download_materials/:id',
-          element:<Download_materials></Download_materials>
+          element: <PrivateRoute><Download_materials></Download_materials>  </PrivateRoute>
         },
         {
            path:'update_note/:id',
-           element:<Update_Notes></Update_Notes>
+           element: <PrivateRoute><Update_Notes></Update_Notes>  </PrivateRoute>
+        },
+        {
+
+          path:'reject_reason',
+          element: <PrivateRoute><Reject_Reason></Reject_Reason>  </PrivateRoute>
+
         },
 
         // admin routes 
 
         {
            path:'view_all_user',
-           element:<View_all_user></View_all_user>
+           element: <PrivateRoute><View_all_user></View_all_user>  </PrivateRoute>
         },
         {
           path:'view_all_study_session',
-          element:<View_All_Study_Session></View_All_Study_Session>
+          element: <PrivateRoute><View_All_Study_Session></View_All_Study_Session>  </PrivateRoute>
         },
         {
           path:'view_all_materials',
-          element:<View_All_Materials_admin></View_All_Materials_admin>
+          element: <PrivateRoute><View_All_Materials_admin></View_All_Materials_admin>  </PrivateRoute>
         },
         {
           path:'update_session/:id',
-          element:<Update_Session></Update_Session>
+          element: <PrivateRoute><Update_Session></Update_Session>  </PrivateRoute>
         }
         
       ]

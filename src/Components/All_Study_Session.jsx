@@ -1,15 +1,45 @@
- 
+
+import { useNavigate } from "react-router-dom";
 import useAllSession from "../Hooks/useAllSession";
+import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 
 const All_Study_Session = () => {
- 
-    const [isPending,All_session] = useAllSession();
-  
 
-   
+    const [isPending, All_session,refetch] = useAllSession();
+    const axiosPublic = useAxiosPublic();
+
+const navigate=useNavigate();
+
 
     if (isPending) return <p>Loading</p>
+
+
+    const handleRequest = (_id) => {
+
+        const value = {status:'pending'};
+        axiosPublic.put(`/session_request/${_id}`, value)
+            .then(res => {
+
+                if (res.data.modifiedCount === 1) {
+
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Successfully Update Note",
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                     
+                    refetch();
+                    navigate('/dashboard/all_study_session');
+                }
+            })
+
+
+
+    }
 
 
 
@@ -34,11 +64,12 @@ const All_Study_Session = () => {
                                 <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Tutor Name</th>
                                 <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Tutor Email</th>
                                 <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Status</th>
+                                <th className="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase"></th>
                             </tr>
                         </thead>
                         <tbody className="bg-white">
                             {
-                                All_session.map(items => 
+                                All_session.map(items =>
                                     <tr key={items._id}>
                                         <td className="py-4 px-6 border-b border-gray-200">{items?.session_title}</td>
                                         <td className="py-4 px-6 border-b border-gray-200 truncate">{items?.tutor_name}</td>
@@ -53,8 +84,17 @@ const All_Study_Session = () => {
                                             {
                                                 items?.status === 'rejected' && <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Rejected</span>
                                             }
-                                            
+
                                         </td>
+
+                                        <td>
+                                            {
+                                                items?.status === 'rejected' && <button onClick={() => handleRequest(items._id)} className="px-4 py-2 bg-primary text-white rounded-lg"> Request</button>
+                                            }
+
+
+                                        </td>
+
                                     </tr>
                                 )
                             }

@@ -8,7 +8,7 @@ const useAllSession = () => {
     const axiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
 
-    const { isPending, data: All_session = [] } = useQuery({
+    const { isPending, data: All_session = [],refetch } = useQuery({
         queryKey: ['all_session', user?.email],
         queryFn: async () => {
             const res = await axiosPublic.get(`/all_sessions/${user.email}`);
@@ -16,7 +16,7 @@ const useAllSession = () => {
         }
     })
 
-    return [isPending,All_session];
+    return [isPending,All_session,refetch];
 };
 
 export default useAllSession;

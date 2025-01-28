@@ -13,6 +13,7 @@ import useUser from "../Hooks/useUser";
 import { useContext } from "react";
 import { AuthContext } from "./Authentication";
 import { MdPowerSettingsNew } from "react-icons/md";
+import { ImCancelCircle } from "react-icons/im";
 
 
 const Dashboard = () => {
@@ -20,7 +21,7 @@ const Dashboard = () => {
     const { user, handleLogOut } = useContext(AuthContext);
     const [isUser, isPending] = useUser();
     if (isPending) return <p>Loading</p>;
-    const userRole = isUser[0].role;
+    const userRole = isUser?.[0]?.role;
 
 
     return (
@@ -61,6 +62,12 @@ const Dashboard = () => {
                                     className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                     <CiViewList className="text-2xl mx-2" />
                                     View all Materials
+
+                                </NavLink>
+                                <NavLink to={'reject_reason'}
+                                    className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                    <ImCancelCircle className="text-2xl mx-2" />
+                                    Rejected  Reason
 
                                 </NavLink>
                             </>
@@ -132,19 +139,7 @@ const Dashboard = () => {
 
 
 
-                        <div role="button" tabIndex="0" className="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none">
-                            <div className="grid place-items-center mr-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-5 w-5">
-                                    <path fillRule="evenodd" d="M6.912 3a3 3 0 00-2.868 2.118l-2.411 7.838a3 3 0 00-.133.882V18a3 3 0 003 3h15a3 3 0 003-3v-4.162c0-.299-.045-.596-.133-.882l-2.412-7.838A3 3 0 0017.088 3H6.912zm13.823 9.75l-2.213-7.191A1.5 1.5 0 0017.088 4.5H6.912a1.5 1.5 0 00-1.434 1.059L3.265 12.75H6.11a3 3 0 012.684 1.658l.256.513a1.5 1.5 0 001.342.829h3.218a1.5 1.5 0 001.342-.83l.256-.512a3 3 0 012.684-1.658h2.844z" clipRule="evenodd"></path>
-                                </svg>
-                            </div>Example Pages
-
-                            <div className="grid place-items-center ml-auto justify-self-end">
-                                <div className="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-blue-500/20 text-blue-900 py-1 px-2 text-xs rounded-full">
-                                    <span className="">14</span>
-                                </div>
-                            </div>
-                        </div>
+                        <hr />
 
                         <NavLink to={'/'}
                             className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
@@ -155,7 +150,7 @@ const Dashboard = () => {
 
                         {
                             user?.email && <Link onClick={handleLogOut}
-                                className={   'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80    '} >
+                                className={'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80    '} >
                                 <MdPowerSettingsNew className="text-2xl mx-2" />
                                 LogOut
                             </Link>

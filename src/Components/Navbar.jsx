@@ -57,19 +57,7 @@ const Navbar = () => {
 
                             </p>
 
-                            <p className="text-[#131313b3] flex justify-center items-center mb-3 cursor-pointer font-bold text-center">
-
-                                <NavLink
-                                    to='/all_volunteer'
-                                    className={({ isActive }) =>
-                                        isActive ? 'text-[1rem] mx-6 font-semibold text-[#1b206b]' : 'text-[1rem] mx-6 font-semibold text-black'
-                                    }
-                                >
-                                    All Volunteer Need post
-                                </NavLink>
-
-                            </p>
-
+                             
 
 
 
@@ -97,14 +85,19 @@ const Navbar = () => {
                                                         <img className="object-cover h-full w-full rounded-full" src={user?.photoURL} alt="" />
                                                     </div>
                                                 </Link>
+                                                <p className="text-[#131313b3] flex justify-center items-center mb-3 cursor-pointer font-bold text-center">
 
-                                                <div className="dropdown dropdown-bottom py-1">
-                                                    <div tabIndex={0} role="button" className="bg-white text-secondary px-4 rounded-lg mx-4 py-1">My Profile</div>
-                                                    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                                                        <li><Link to={'/add_volunteer_need'}>Add Volunteer need Post</Link></li>
-                                                        <li><Link to={'/manage_my_post'}>Manage My Posts</Link></li>
-                                                    </ul>
-                                                </div>
+                                                    <NavLink
+                                                        to='/Dashboard'
+                                                        className={({ isActive }) =>
+                                                            isActive ? 'text-[1rem] mx-6 font-semibold text-[#1b206b]' : 'text-[1rem] mx-6 font-semibold text-black'
+                                                        }
+                                                    >
+                                                        Dashboard
+                                                    </NavLink>
+
+                                                </p>
+
 
                                             </div>
                                         </>
@@ -177,13 +170,6 @@ const Navbar = () => {
                                         </Link>
 
 
-                                      
-                                         
-                                        {/* https://i.ibb.co/kqMzRpQ/usman-yousaf-q2q5-Cd-Lu-Wn-I-unsplash.jpg */}
-                                        {/* https://i.ibb.co/YfjsGjG/christian-buehner-DIt-Ylc26z-VI-unsplash.jpg  */}
-                                        {/* https://i.ibb.co/dBYCh2s/jurica-koletic-7-YVZYZe-ITc8-unsplash.jpg  */}
-                                        {/* https://i.ibb.co/MphtKWw/alex-suprun-ZHv-M3-XIOHo-E-unsplash.jpg  */}
-                                        {/* https://i.ibb.co/8KcL09c/photo-1535713875002-d1d0cf377fde.jpg  */}
 
 
 
@@ -215,7 +201,7 @@ const Navbar = () => {
                         <div className='mx-4 lg:hidden sm:block md:block'>
                             <button onClick={() => setMenu(!menu)}>
                                 {
-                                    menu ? <IoMenu className="text-3xl text-[#f75d1b]" /> : <RxCross2 className="text-3xl text-[#f75d1b]" />
+                                    menu ? <IoMenu className="text-3xl text-primary" /> : <RxCross2 className="text-3xl text-primary" />
                                 }
                             </button>
                         </div>

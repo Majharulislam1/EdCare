@@ -36,7 +36,7 @@ const Upload_Materials_info = () => {
             }
         });
 
-         console.log(res.data);
+        
         if (res.data.success) {
             const data = { title, session_id, tutor_email, links, imgFile: res.data?.data?.display_url };
 

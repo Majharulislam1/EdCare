@@ -90,7 +90,7 @@ const Review_booked_session = () => {
 
                             </div>
                             <div className="p-6 border-t border-gray-200 rounded-b">
-                                <button className="text-white bg-primary   focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Create note</button>
+                                <button className="text-white bg-primary   focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Review</button>
                             </div>
                         </form>
                     </div>

@@ -164,7 +164,7 @@ const View_All_Study_Session = () => {
                                 if (data.deletedCount === 1) {
                                     Swal.fire({
                                         title: "Successfully Deleted!",
-                                        text: "Note has been deleted.",
+                                        text: "Session has been deleted.",
                                         icon: "success"
                                     });
                                     refetch();

@@ -25,8 +25,9 @@ const Upload_Materials_info = () => {
         const links = e.target.link.value;
         const imgFile = e.target.img.files[0];
 
-        // 
+        
         const formData = new FormData();
+        
         formData.append('image', imgFile);
 
         const res = await axiosPublic.post(image_hosting_api, formData, {
@@ -34,8 +35,10 @@ const Upload_Materials_info = () => {
                 'content-type': 'multipart/form-data'
             }
         });
+
+         console.log(res.data);
         if (res.data.success) {
-            const data = { title, session_id, tutor_email, links, imgFile: res.data.data.display_url };
+            const data = { title, session_id, tutor_email, links, imgFile: res.data?.data?.display_url };
 
             const upload_materials = await axiosPublic.post('/upload_materials', data);
             if (upload_materials.data.insertedId) {

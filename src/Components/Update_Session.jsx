@@ -23,10 +23,10 @@ const Update_Session = () => {
         }
 
     })
-    const [reg_start_date, setRegStart] = useState(new Date(session_detail?.reg_start_date));
-    const [reg_end_date, setRegEnd] = useState(new Date(session_detail?.reg_end_date));
-    const [classStart, setClassStart] = useState(new Date(session_detail?.classStart));
-    const [classEnd, setClassEnd] = useState(new Date(session_detail?.classEnd));
+    const [reg_start_date, setRegStart] = useState(new Date( ));
+    const [reg_end_date, setRegEnd] = useState(new Date( ));
+    const [classStart, setClassStart] = useState(new Date( ));
+    const [classEnd, setClassEnd] = useState(new Date( ));
 
     const handleUpdate = (e) => {
         e.preventDefault();

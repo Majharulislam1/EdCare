@@ -47,7 +47,7 @@ const Create_study_session = () => {
                         showConfirmButton: false,
                         timer: 2000
                     });
-                    navigate('/');
+                    navigate('/dashboard/all_study_session');
                     e.target.reset();
                 }
             })

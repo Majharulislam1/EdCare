@@ -2,15 +2,19 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import moment from 'moment';
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./Authentication";
 import Swal from "sweetalert2";
 import useUser from "../Hooks/useUser";
+import Rating from "react-rating";
+import { FaRegStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa6";
 
 
 const Session_details = () => {
 
     const { id } = useParams();
+    const [rating, setRating] = useState(0);
 
     const axiosPublic = useAxiosPublic();
     const { user } = useContext(AuthContext);
@@ -24,6 +28,40 @@ const Session_details = () => {
     })
 
     const [isUser] = useUser();
+
+
+
+    const { data: Ratings = [] } = useQuery({
+        queryKey: ['average rating', session_detail?._id],
+        queryFn: async () => {
+            const res = await axiosPublic.get(`/rating/${session_detail?._id}`);
+            return res.data;
+        }
+    })
+
+
+    useEffect(() => {
+        if (Ratings?.length === 0) {
+            setRating(0);
+        } else {
+            const totalRating = Ratings?.reduce(
+                (sum, feedback) => sum + parseInt(feedback?.rating, 10),
+                0
+            );
+
+            const averageRating = totalRating / Ratings?.length;
+            setRating(averageRating);
+        }
+    }, [Ratings]);
+
+   
+
+
+
+
+
+
+
 
 
 
@@ -112,7 +150,14 @@ const Session_details = () => {
                                 <p className="text-paragraph font-bold">Registration fee : $ {session_detail?.reg_fee}</p>
                                 <p className="text-paragraph font-bold">Session duration : <span className="bg-primary text-white px-3 rounded-full">{session_detail?.
                                     session_duration} hr</span></p>
-                                <p className="text-paragraph font-bold">Rating: </p>
+                                <p className="text-paragraph font-bold my-4 flex items-center">Rating:
+                                    <Rating className="mx-2" initialRating={Math.round(rating)} emptySymbol={
+                                        <FaRegStar className="text-[#FFCA28]" />}
+                                        fullSymbol={
+
+                                            <FaStar className="text-[#FFCA28]" />
+                                        } readonly />
+                                </p>
                             </div>
                             <div className="flex justify-between items-center">
 

@@ -1,56 +1,78 @@
-# EdCare
+# EdCare 🎓  
+**A Collaborative Study Platform**  
 
-This project focuses on creating a Collaborative Study Platform that connects students, tutors, and administrators to streamline study session scheduling, resource sharing, and user management. By integrating these functionalities into a single platform, we aim to enhance collaboration, improve access to study materials, and ensure effective management of educational activities. This project will outline the key features, design principles, and implementation strategies necessary to develop a user-friendly and robust platform that supports the dynamic needs of modern education.
+EdCare is a modern platform that connects **students**, **tutors**, and **administrators** to streamline study session scheduling, resource sharing, and user management. Built with scalability and user experience in mind, EdCare is designed to meet the dynamic needs of today’s education system.
 
+---
 
+## 📸 Project Screenshot  
+![EdCare Screenshot](https://via.placeholder.com/800x400.png?text=EdCare+Landing+Page)  
+*(Replace this placeholder with an actual screenshot of your project.)*
 
+---
 
-1. Responsive Design
-2. User-Friendly 
-3. Role-Based Authentication & Authorization
-4. Routing System
-5. Dynamic Home Page
-6. Study Session Management
-7. Student Dashboard
-8. Tutor Dashboard
-9. Admin Dashboard
-10. Payment Integration
-11. Review & Rating System
-12. Search & Filter Functionalities
+## 🛠️ Main Technologies  
 
+### **Frontend**
+- **Languages**: HTML, CSS, JavaScript  
+- **Frameworks/Libraries**:  
+  - React.js  
+  - Tailwind CSS  
+  - React Router DOM  
+  - Firebase Authentication  
 
+### **Backend**  
+- Node.js  
+- Express.js  
+- MongoDB  
 
-### Frontend Technology:
-1. HTML, CSS
-2. JavaScript
-3. Tailwind CSS
-4. React.js
-5. React Router DOM
-6. Firebase Authentication
+### **Payment Integration**  
+- Stripe API  
 
-### Backend Technology:
-1. Node.js
-2. Express.js
-3. MongoDB
-4. Vercel
-5. Cors
+---
 
-### NPM Packages Used
+## 🌟 Core Features  
+1. **Responsive Design**: Ensures accessibility across devices.  
+2. **Role-Based Authentication & Authorization**: Students, Tutors, and Admins have distinct roles.  
+3. **Dynamic Home Page**: Displays relevant information based on user role.  
+4. **Study Session Management**: Schedule, track, and update study sessions.  
+5. **Dashboards**:  
+   - Student Dashboard  
+   - Tutor Dashboard  
+   - Admin Dashboard  
+6. **Payment Integration**: Secure payments using **Stripe**.  
+7. **Review & Rating System**: Share feedback for tutors and sessions.  
+8. **Search & Filter Functionalities**: Find sessions, resources, or tutors efficiently.  
 
-1. React icons
-2. React-rating
-3. React-awesome-reveal
-4. Sweet alert2
-5. React Rating Stars
-6. React Toastify
-7. slick carousel
-8. React-tooltip
+---
 
- ### Payment method
- 1. stripe
-     
-     
- 
+## 📦 Dependencies  
 
+### **Core Dependencies**  
+- `@stripe/react-stripe-js`  
+- `@stripe/stripe-js`  
+- `@tanstack/react-query`  
+- `axios`  
+- `firebase`  
+- `react`  
+- `react-dom`  
+- `react-router-dom`  
+- `react-toastify`  
+- `sweetalert2`  
 
-[Live link](https://edcare-ae4c3.web.app/)
+### **Additional Tools**  
+- `moment`  
+- `react-datepicker`  
+- `react-icons`  
+- `react-tooltip`  
+
+---
+
+## 🚀 How to Run the Project Locally  
+
+### Step 1: Clone the Repository  
+Clone the repository to your local machine using the following command:  
+
+```bash
+git clone https://github.com/yourusername/EdCare.git
+cd EdCare

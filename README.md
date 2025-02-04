@@ -78,23 +78,42 @@ Clone the repository to your local machine using the following command:
 git clone https://github.com/yourusername/EdCare.git
 cd EdCare
 
-### Step 1: Clone the Repository  
-Clone the repository to your local machine using the following command:  
+ <h2>📌 Setup Instructions</h2>
 
-```bash
-git clone https://github.com/yourusername/EdCare.git
-cd EdCare
+    <h3>Step 1: Clone the Repository</h3>
+    <p>Clone the repository to your local machine using the following command:</p>
+    <pre><code>git clone https://github.com/yourusername/EdCare.git
+cd EdCare</code></pre>
 
+    <h3>Step 2: Install Dependencies</h3>
+    <p>Install all the required dependencies for the project by running:</p>
+    <pre><code>npm install</code></pre>
+    <p>This will install all the libraries and modules listed in the <code>package.json</code> file.</p>
 
-### **2️⃣ Missing Opening Code Block for `npm install`**  
-The `npm install` command is missing an opening triple backtick (` ``` `).  
+    <h3>Step 3: Configure Environment Variables</h3>
+    <p>Create a <code>.env</code> file in the root directory of the project and add the following environment variables:</p>
+    <pre><code>VITE_API_KEY=your_api_key_here
+VITE_AUTH_DOMAIN=your_auth_domain_here
+VITE_PROJECT_ID=your_project_id_here
+VITE_STORAGE_BUCKET=your_storage_bucket_here
+VITE_MESSAGING_SENDER_ID=your_messaging_sender_id_here
+VITE_APP_ID=your_app_id_here</code></pre>
+    <p>🔹 <strong>Replace placeholders</strong> (<code>your_api_key_here</code>, etc.) with actual credentials.</p>
+    <p>🔹 <strong>Ensure that your .env file is not committed to Git</strong> by adding <code>.env</code> to your <code>.gitignore</code> file:</p>
+    <pre><code>.env</code></pre>
 
-#### **Fix:**  
-Make sure the `npm install` section has a proper code block:  
+    <h3>Step 4: Start the Development Server</h3>
+    <p>Run the project in development mode by executing:</p>
+    <pre><code>npm run dev</code></pre>
+    <p>If using <strong>Vite</strong>, the application will start at:</p>
+    <p>➡️ <a href="http://localhost:5173/" target="_blank">http://localhost:5173/</a></p>
 
-```md
-### Step 2: Install Dependencies  
-Install all the required dependencies for the project by running:  
+    <h3>✅ You're All Set! ✅</h3>
+    <p>Now you can start using the project! 🚀</p>
 
-```bash
-npm install
+    <h3>🔥 Fix Summary:</h3>
+    <ul>
+        <li>Removed duplicate "Step 1: Clone the Repository" section</li>
+        <li>Properly closed all code blocks (<code>```</code>)</li>
+        <li>Fixed missing backticks in "npm install" section</li>
+    </ul>

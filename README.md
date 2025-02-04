@@ -78,6 +78,23 @@ Clone the repository to your local machine using the following command:
 git clone https://github.com/yourusername/EdCare.git
 cd EdCare
 
- 
+### Step 1: Clone the Repository  
+Clone the repository to your local machine using the following command:  
+
+```bash
+git clone https://github.com/yourusername/EdCare.git
+cd EdCare
 
 
+### **2️⃣ Missing Opening Code Block for `npm install`**  
+The `npm install` command is missing an opening triple backtick (` ``` `).  
+
+#### **Fix:**  
+Make sure the `npm install` section has a proper code block:  
+
+```md
+### Step 2: Install Dependencies  
+Install all the required dependencies for the project by running:  
+
+```bash
+npm install

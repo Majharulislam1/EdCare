@@ -7,7 +7,7 @@ EdCare is a modern platform that connects **students**, **tutors**, and **admini
 
 ## 📸 Project Screenshot  
 ![EdCare Screenshot](https://i.ibb.co/1pbNL4s/Capture.jpg)  
-*(Replace this placeholder with an actual screenshot of your project.)*
+
 
  
 ---
@@ -76,12 +76,8 @@ Clone the repository to your local machine using the following command:
 
 ```bash
 git clone https://github.com/yourusername/EdCare.git
-cd EdCare```
+cd EdCare
 
-### Step 2: Install Dependencies
-Install all the required dependencies for the project by running:
-
-```bash
-npm install```
+ 
 
 

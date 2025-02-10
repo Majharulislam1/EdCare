@@ -42,37 +42,35 @@ const Navbar = () => {
 
                         {/* menu section start */}
 
-                        <div className={`sm:absolute md:absolute z-50 bg-white border lg:hidden sm:right-[25%]  md:right-[38%] lg:right-1/2 w-[200px] rounded-lg ${menu ? '-top-[150px]' : 'top-[90px]'}  duration-150`}>
-                            <p className="text-[#131313b3] flex justify-center items-center my-3 cursor-pointer font-bold text-center">
+                        <div className={`sm:absolute md:absolute z-50 bg-white  border lg:hidden sm:right-[25%]  md:right-[38%] lg:right-1/2 w-[200px] rounded-lg ${menu ? '-top-[250px]' : 'top-[90px]'}  duration-150`}>
 
-                                <NavLink
-                                    to="/"
-                                    className={({ isActive }) =>
-                                        isActive ? 'text-[1rem] mr-6 font-semibold text-[#1b206b]' : 'text-[1rem] mr-6 font-semibold text-black'
-                                    }
-                                >
-                                    Home
-                                </NavLink>
+                            <div className="flex flex-col justify-between items-center">
+                                <p className="text-[#131313b3] my-3 cursor-pointer font-bold text-center">
 
-
-                            </p>
-                            <p className="text-[#131313b3] flex justify-center items-center my-3 cursor-pointer font-bold text-center">
-
-                                <NavLink
-                                    to="/all_session_user"
-                                    className={({ isActive }) =>
-                                        isActive ? 'text-[1rem] mr-6 font-semibold text-[#1b206b]' : 'text-[1rem] mr-6 font-semibold text-black'
-                                    }
-                                >
-                                    All Session
-                                </NavLink>
+                                    <NavLink
+                                        to="/"
+                                        className={({ isActive }) =>
+                                            isActive ? 'text-[1rem]  font-semibold text-primary' : 'text-[1rem]  font-semibold text-black'
+                                        }
+                                    >
+                                        Home
+                                    </NavLink>
 
 
-                            </p>
+                                </p>
+                                <p className="text-[#131313b3]   mb-3 cursor-pointer font-bold text-center">
 
-                             
+                                    <NavLink
+                                        to="/all_session_user"
+                                        className={({ isActive }) =>
+                                            isActive ? 'text-[1rem]  font-semibold text-primary' : 'text-[1rem]  font-semibold text-black'
+                                        }
+                                    >
+                                        All Session
+                                    </NavLink>
 
 
+                                </p>
 
 
 
@@ -80,56 +78,61 @@ const Navbar = () => {
 
 
 
-                            <p>
-                                {
-                                    user && user?.email ? (
-                                        <>
-                                            <div className="flex justify-center flex-col-reverse items-center">
 
 
 
-                                                <button onClick={handleLogOut} className="bg-white border mb-4 p-2 px-4 rounded-full mr-4 relative">
 
-                                                    Log Out
-
-                                                </button>
-                                                <Link data-tooltip-id="my-tooltip" data-tooltip-content={user && user?.displayName}>
-                                                    <div className="bg-white border w-[60px] h-[60px] p-1 rounded-full mr-4">
-                                                        <img className="object-cover h-full w-full rounded-full" src={user?.photoURL} alt="" />
-                                                    </div>
-                                                </Link>
-                                                <p className="text-[#131313b3] flex justify-center items-center mb-3 cursor-pointer font-bold text-center">
-
-                                                    <NavLink
-                                                        to='/dashboard'
-                                                        className={({ isActive }) =>
-                                                            isActive ? 'text-[1rem] mx-6 font-semibold text-[#1b206b]' : 'text-[1rem] mx-6 font-semibold text-black'
-                                                        }
-                                                    >
-                                                        Dashboard
-                                                    </NavLink>
-
-                                                </p>
-
-
-                                            </div>
-                                        </>
-
-                                    ) :
-
-                                        (
+                                <p>
+                                    {
+                                        user && user?.email ? (
                                             <>
-                                                <Link to={'/login'} className="flex justify-center mb-3">
-                                                    <button className="bg-white border p-2 px-4 rounded-full mr-4 relative">
-                                                        <p>Login</p>
+                                                <div className="flex justify-center  flex-col-reverse items-center">
+
+
+
+                                                    <button onClick={handleLogOut} className="bg-white border mb-4 p-2 px-4 rounded-full mr-4 relative">
+
+                                                        Log Out
+
                                                     </button>
-                                                </Link>
+                                                    <Link data-tooltip-id="my-tooltip" data-tooltip-content={user && user?.displayName}>
+                                                        <div className="bg-white border w-[60px] h-[60px] p-1 rounded-full my-4">
+                                                            <img className="object-cover h-full w-full rounded-full" src={user?.photoURL} alt="" />
+                                                        </div>
+                                                    </Link>
+                                                    <p className="text-[#131313b3] flex justify-center items-center mb-3 cursor-pointer font-bold text-center">
+
+                                                        <NavLink
+                                                            to='/dashboard'
+                                                            className={({ isActive }) =>
+                                                                isActive ? 'text-[1rem] mx-6 font-semibold text-[#1b206b]' : 'text-[1rem] mx-6 font-semibold text-black'
+                                                            }
+                                                        >
+                                                            Dashboard
+                                                        </NavLink>
+
+                                                    </p>
+
+
+                                                </div>
                                             </>
 
-                                        )
+                                        ) :
 
-                                }
-                            </p>
+                                            (
+                                                <>
+                                                    <Link to={'/login'} className="flex justify-center mb-3">
+                                                        <button className="bg-white border p-2 my-4 px-4 rounded-full  relative">
+                                                            <p>Login</p>
+                                                        </button>
+                                                    </Link>
+                                                </>
+
+                                            )
+
+                                    }
+                                </p>
+                            </div>
                         </div>
 
                         {/* menu section end */}
@@ -189,10 +192,6 @@ const Navbar = () => {
                                                 <p>LogOut</p>
                                             </div>
                                         </Link>
-
-
-
-
 
 
                                     </>

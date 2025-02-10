@@ -28,10 +28,10 @@ const Study_session_home = () => {
 
     }
 
-   
 
 
-     
+
+
 
 
     return (
@@ -46,7 +46,7 @@ const Study_session_home = () => {
             </div>
 
             <div className="w-4/5 mx-auto ">
-                <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 sm:grid-cols-1 mb-16">
+                <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 sm:grid-cols-1 mb-16  ">
                     {
                         approved_Session && approved_Session?.length > 7 ? approved_Session?.slice(0, 6)?.map(items => <Session_home_card key={items._id} sessions={items}></Session_home_card>) :
                             approved_Session?.map(items => <Session_home_card key={items._id} sessions={items}></Session_home_card>)

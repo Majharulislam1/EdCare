@@ -29,7 +29,7 @@ const All_study_session_user = () => {
 
 
     return (
-        <div>
+        <div className='mt-[100px]'>
             <div className="relative w-full lg:h-36 md:h-36 sm:h-36 bg-primary  flex items-center justify-center">
                 <h1 className="text-white text-3xl font-bold">All Study Session</h1>
             </div>

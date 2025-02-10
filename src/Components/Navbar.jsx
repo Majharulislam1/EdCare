@@ -26,7 +26,7 @@ const Navbar = () => {
 
 
     return (
-        <div className="sm:-mb-1">
+        <div className="sm:-mb-1 fixed top-0 z-10 w-full">
 
 
 
@@ -42,7 +42,7 @@ const Navbar = () => {
 
                         {/* menu section start */}
 
-                        <div className={`sm:absolute md:absolute z-50 bg-white border lg:hidden sm:right-[25%]  md:right-[38%] lg:right-1/2 w-[200px] rounded-lg ${menu ? '-top-3/4' : 'top-[6rem]'}  duration-150`}>
+                        <div className={`sm:absolute md:absolute z-50 bg-white border lg:hidden sm:right-[25%]  md:right-[38%] lg:right-1/2 w-[200px] rounded-lg ${menu ? '-top-[150px]' : 'top-[90px]'}  duration-150`}>
                             <p className="text-[#131313b3] flex justify-center items-center my-3 cursor-pointer font-bold text-center">
 
                                 <NavLink
@@ -202,7 +202,7 @@ const Navbar = () => {
                                     (
                                         <>
                                             <Link to={'/login'}>
-                                                <div className="bg-primary text-white border p-2 px-4 rounded-full mr-4 relative">
+                                                <div className="bg-primary sm md:hidden lg:block text-white border p-2 px-4 rounded-full mr-4 relative">
                                                     <p>sign-up</p>
                                                 </div>
                                             </Link>

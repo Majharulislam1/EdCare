@@ -11,15 +11,15 @@ const Newsletter_card = () => {
                     </h2>
 
                     <p className="mx-auto mt-2 max-w-xl text-center text-lg   text-gray-200">
-                    Join our newsletter and be the first to know about new courses, upcoming webinars, special discounts, and expert tips to enhance your learning journey. Whether you're looking to advance your skills or discover new topics, our updates will keep you informed and motivated.
+                        Join our newsletter and be the first to know about new courses, upcoming webinars, special discounts, and expert tips to enhance your learning journey. Whether you're looking to advance your skills or discover new topics, our updates will keep you informed and motivated.
                     </p>
 
                     <form className="mx-auto mt-10 flex max-w-md gap-x-4">
 
-                        <label for="email-address" className="sr-only">Email address</label>
-                        <input id="email-address" name="email" type="email" autoComplete="email" required="" className="min-w-0 flex-auto rounded-md border-0 bg-white px-3.5 py-2 text-primary shadow-sm    outline-none   sm:text-sm sm:leading-6" placeholder="Enter your email" />
+                        <label htmlFor="email-address" className="sr-only">Email address</label>
+                        <input id="email-address"  name="email" type="email" autoComplete="email" required="" className="min-w-0 flex-auto rounded-md border-0 bg-white px-3.5 py-2 text-primary shadow-sm    outline-none   sm:text-sm sm:leading-6" placeholder="Enter your email" />
 
-                            <button type="submit" className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Send</button>
+                        <button type="submit" className="flex-none rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-primary shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Send</button>
                     </form>
 
 

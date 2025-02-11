@@ -11,7 +11,7 @@ const Study_session_home = () => {
     const axiosPublic = useAxiosPublic();
 
 
-    const { isPending, data: approved_Session = [] } = useQuery({
+    const { isPending, data: approved_Session = [] ,isLoading} = useQuery({
         queryKey: ['all_session_all',],
         queryFn: async () => {
             const res = await axiosPublic.get(`/all_session_home`);
@@ -19,7 +19,7 @@ const Study_session_home = () => {
         }
     })
 
-    if (isPending) return
+    if (isPending || isLoading) return
     {
 
         <div className="flex justify-center py-8">

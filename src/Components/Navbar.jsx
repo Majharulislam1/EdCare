@@ -84,6 +84,19 @@ const Navbar = () => {
 
 
                                 </p>
+                                <p className="text-[#131313b3]   mb-3 cursor-pointer font-bold text-center">
+
+                                    <NavLink
+                                        to="/contact_us"
+                                        className={({ isActive }) =>
+                                            isActive ? 'text-[1rem]  font-semibold text-primary' : 'text-[1rem]  font-semibold text-black'
+                                        }
+                                    >
+                            Contact
+                                    </NavLink>
+
+
+                                </p>
 
 
 
@@ -178,6 +191,15 @@ const Navbar = () => {
                                 }
                             >
                                About us
+                            </NavLink>
+
+                            <NavLink
+                                to="/contact_us"
+                                className={({ isActive }) =>
+                                    isActive ? 'text-[1rem] flex items-center mr-6 font-semibold text-white bg-primary px-4 py-1 rounded-lg' : 'text-[1rem] flex items-center mr-6 font-semibold text-black'
+                                }
+                            >
+                               Contact
                             </NavLink>
 
 

@@ -16,11 +16,11 @@ const Footer = () => {
                     </div>
                     <div className="p-5">
                         <div className="text-sm uppercase text-primary font-bold">Resources</div>
-                        <Link className="my-3 block text-black" to={'/'}>Home<span className="text-white text-xs p-1"></span></Link>
-                        <Link className="my-3 block text-black" to={'/brands'}>Brands <span className="text-white text-xs p-1"></span></Link>
-                        <Link className="my-3 block text-black"  >Contact Us <span className="text-white text-xs p-1"></span></Link>
-                        <Link className="my-3 block text-black"  >About Dev<span className="text-white text-xs p-1"></span></Link>
-                        <Link className="my-3 block text-black" >Support <span className="text-white text-xs p-1">New</span></Link>
+                        <Link  className="my-3 block text-black" to={'/'}>Home<span className="text-white text-xs p-1"></span></Link>
+                        <Link className="my-3 block text-black" to={'/all_session_user'}>All Session <span className="text-white text-xs p-1"></span></Link>
+                        <Link className="my-3 block text-black"  to={'/contact_us'}>Contact Us <span className="text-white text-xs p-1"></span></Link>
+                        <Link className="my-3 block text-black"  to={'/about_us'}>About Dev<span className="text-white text-xs p-1"></span></Link>
+                        
                     </div>
                     <div className="p-5">
                         <div className="text-sm uppercase text-primary font-bold">Support</div>

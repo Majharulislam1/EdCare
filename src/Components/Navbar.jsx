@@ -42,7 +42,7 @@ const Navbar = () => {
 
                         {/* menu section start */}
 
-                        <div className={`sm:absolute md:absolute z-50 bg-white  border lg:hidden sm:right-[25%]  md:right-[38%] lg:right-1/2 w-[200px] rounded-lg ${menu ? '-top-[250px]' : 'top-[90px]'}  duration-150`}>
+                        <div className={`sm:absolute md:absolute z-50 bg-white  border lg:hidden sm:right-[25%]  md:right-[38%] lg:right-1/2 w-[200px] rounded-lg ${menu ? '-top-[350px]' : 'top-[90px]'}  duration-150`}>
 
                             <div className="flex flex-col justify-between items-center">
                                 <p className="text-[#131313b3] my-3 cursor-pointer font-bold text-center">

@@ -32,6 +32,7 @@ import Payment from "./Components/Payment";
 import Reject_Reason from "./Components/Reject_Reason";
 import ErrorPage from "./Components/ErrorPage";
 import All_study_session_user from "./Components/All_study_session_user";
+import About_us from "./Components/About_us";
 
   const router = createBrowserRouter([
     {
@@ -60,6 +61,9 @@ import All_study_session_user from "./Components/All_study_session_user";
       {
         path:'payment/:id',
         element:<PrivateRoute>  <Payment></Payment> </PrivateRoute>
+      },{
+          path:'/about_us',
+          element:<About_us></About_us>
       }
     ]
     },

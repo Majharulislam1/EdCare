@@ -33,6 +33,7 @@ import Reject_Reason from "./Components/Reject_Reason";
 import ErrorPage from "./Components/ErrorPage";
 import All_study_session_user from "./Components/All_study_session_user";
 import About_us from "./Components/About_us";
+import Contact_us from "./Components/Contact_us";
 
   const router = createBrowserRouter([
     {
@@ -64,6 +65,9 @@ import About_us from "./Components/About_us";
       },{
           path:'/about_us',
           element:<About_us></About_us>
+      },{
+          path:'/contact_us',
+          element:<Contact_us></Contact_us>
       }
     ]
     },

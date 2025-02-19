@@ -1,13 +1,20 @@
-import React from 'react';
- 
+import React, { useEffect, useState } from 'react';
+
 import useAxiosPublic from '../Hooks/useAxiosPublic';
 import { useQuery } from '@tanstack/react-query';
 import Session_home_card from './Session_home_card';
+import { IoChevronDownOutline } from "react-icons/io5";
 
 const All_study_session_user = () => {
 
 
     const axiosPublic = useAxiosPublic();
+    
+  
+    const [isOpen, setIsOpen] = useState(false);
+    
+    const [sortedSessions, setSortedSessions] = useState([]);
+    const [sortOrder, setSortOrder] = useState("asc");
 
 
     const { isPending, data: approved_Session = [] } = useQuery({
@@ -17,6 +24,23 @@ const All_study_session_user = () => {
             return res.data;
         }
     })
+
+    
+    
+    const sortSessions = (order) => {
+      const sorted = [...approved_Session].sort((a, b) =>
+        order === "asc" ? a.reg_fee - b.reg_fee : b.reg_fee - a.reg_fee
+      );
+      setSortedSessions(sorted);
+      setSortOrder(order);
+    };
+    
+     
+    useEffect(() => {
+      setSortedSessions(approved_Session);
+    }, [approved_Session]);
+
+
 
     if (isPending) return
     {
@@ -28,16 +52,53 @@ const All_study_session_user = () => {
     }
 
 
+     
+
+
     return (
         <div className='mt-[100px]'>
             <div className="relative w-full lg:h-36 md:h-36 sm:h-36 bg-primary  flex items-center justify-center">
                 <h1 className="text-white text-3xl font-bold">All Study Session</h1>
             </div>
 
+            <div className="py-4 w-4/5 mx-auto">
+                <div
+                    className="dropdown inline-block relative"
+                    onMouseEnter={() => setIsOpen(true)}
+                    onMouseLeave={() => setIsOpen(false)}
+                >
+                    <button className="bg-primary text-white font-semibold py-2 px-4 rounded flex items-center">
+                        <p className="mr-1 flex items-center">Sort By <IoChevronDownOutline className='text-lg ml-2' />
+
+                        </p>
+                    </button>
+
+                    {isOpen && (
+                        <ul className="dropdown-menu z-20 absolute text-gray-700 py-2 w-40 bg-white shadow-lg rounded-md">
+                            <li>
+                                <a 
+                                    onClick={() => sortSessions("asc")} className="rounded-t cursor-pointer bg-white hover:bg-primary hover:text-white py-2 px-4 block"
+
+                                >
+                                  Low Price
+                                </a>
+                            </li>
+                            <li>
+                                <a onClick={() => sortSessions("desc")} className="rounded-t bg-white cursor-pointer hover:bg-primary hover:text-white py-2 px-4 block">
+                                    
+                                    High Price
+                                </a>
+                            </li>
+
+                        </ul>
+                    )}
+                </div>
+            </div>
+
             <div className="w-4/5 mx-auto my-10">
                 <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 sm:grid-cols-1 mb-16">
                     {
-                        approved_Session?.map(items => <Session_home_card key={items._id} sessions={items}></Session_home_card>)
+                        sortedSessions?.map(items => <Session_home_card key={items._id} sessions={items}></Session_home_card>)
                     }
                 </div>
             </div>

@@ -40,7 +40,7 @@ const Session_home_card = ({ sessions }) => {
 
                    
                     <div className="flex justify-between mt-auto">
-                        {sessions.isRegistrationOpen ? (
+                        {isRegistrationOpen ? (
                             <>
                                 <button className="py-2 px-4 my-4 bg-primary text-white font-bold rounded-lg shadow-md hover:shadow-lg transition duration-300">
                                     On Going

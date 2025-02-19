@@ -34,6 +34,7 @@ import ErrorPage from "./Components/ErrorPage";
 import All_study_session_user from "./Components/All_study_session_user";
 import About_us from "./Components/About_us";
 import Contact_us from "./Components/Contact_us";
+import OverView from "./Components/OverView";
 
   const router = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ import Contact_us from "./Components/Contact_us";
       path:'/dashboard',
       element:<PrivateRoute>  <Dashboard></Dashboard>  </PrivateRoute>,
       children:[
+        {
+         path:'',
+         element:<OverView></OverView>
+        },
         {
           path:'create-study-session',
           element:<PrivateRoute> <Create_study_session></Create_study_session> </PrivateRoute>

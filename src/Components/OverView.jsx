@@ -1,12 +1,15 @@
 import React from 'react';
+import Line_charts from './Line_Charts';
+import Radio_bar_chart from './Radio_bar_chart';
+
 
 const OverView = () => {
     return (
         <div>
             <div className="bg-white">
-                  
+
                 <div className=" px-4 sm:px-6 lg:py-10 lg:px-8">
-                <h1 className='text-3xl font-bold'>Our service statistics</h1>
+                    <h1 className='text-3xl font-bold'>Our service statistics</h1>
                     <div className="grid grid-cols-1 gap-5 sm:grid-cols-4 mt-4">
                         <div className="bg-white overflow-hidden shadow sm:rounded-lg dark:bg-gray-900">
                             <div className="px-4 py-5 sm:p-6">
@@ -49,6 +52,20 @@ const OverView = () => {
                     </div>
                 </div>
             </div>
+
+
+            <div className='flex justify-between items-center'>
+                <div className='w-2/4'>
+                    <Line_charts></Line_charts>
+                </div>
+                <div className='w-2/4'>
+                    <Radio_bar_chart></Radio_bar_chart>
+                </div>
+            </div>
+
+
+
+
         </div>
     );
 };

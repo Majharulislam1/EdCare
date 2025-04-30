@@ -35,12 +35,12 @@ const Dashboard_2 = () => {
 
                 {/* Sidebar */}
                 <div
-                    className={`fixed inset-y-0 left-0 z-50 w-64   bg-[#3f405a40] backdrop-blur-xl text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                    className={`fixed inset-y-0 left-0 z-50 w-64 shadow-lg  bg-white backdrop-blur-xl text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
                         } md:relative md:translate-x-0 transition-transform duration-300 ease-in-out`}
                 >
                     {/* Sidebar Header */}
                     <div className="flex items-center justify-between p-4 border-b border-gray-700">
-                        <h2 className="text-xl font-bold">Dashboard</h2>
+                        <h2 className="text-xl text-black font-bold">Dashboard</h2>
                         <button className="md:hidden" onClick={toggleSidebar}>
                             <FaTimes size={24} />
                         </button>

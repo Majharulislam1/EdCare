@@ -36,6 +36,7 @@ import About_us from "./Components/About_us";
 import Contact_us from "./Components/Contact_us";
 import OverView from "./Components/OverView";
 import Dashboard_2 from "./Components/Dashboard_2";
+import Admin_Panel from "./Components/Admin_Panel";
 
   const router = createBrowserRouter([
     {
@@ -80,7 +81,7 @@ import Dashboard_2 from "./Components/Dashboard_2";
       children:[
         {
          path:'',
-         element:<OverView></OverView>
+         element:<Admin_Panel></Admin_Panel>
         },
         {
           path:'create-study-session',

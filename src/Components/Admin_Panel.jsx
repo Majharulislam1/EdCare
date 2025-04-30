@@ -4,6 +4,7 @@ import { FcConferenceCall } from "react-icons/fc";
 import { FcDocument } from "react-icons/fc";
 import { FcComboChart } from "react-icons/fc";
 import CustomLineChart from './LineCharts';
+import CustomBarChart from './CustomBarChart';
 // import LineCharts from './LineChart';
 // import CustomBarChart from './BarCharts';
 // import DashboardWidgets from './TeamMembers';
@@ -77,12 +78,13 @@ const Admin_Panel = () => {
 
 
             <div className="flex flex-col lg:flex-row my-7 justify-between items-center">
-                <div className="w-full lg:w-4/6 md:m-4 lg:m-0">
+                <div className="w-full lg:w-4/6 md:m-4 lg:mr-4">
                     
                     <CustomLineChart></CustomLineChart>
                 </div>
                 <div className="w-full lg:w-2/6">
-                    {/* <CustomBarChart></CustomBarChart> */}
+                    
+                    <CustomBarChart></CustomBarChart>
                 </div>
             </div>
 

@@ -19,19 +19,22 @@ const Dashboard_2 = () => {
         setIsOpen(!isOpen);
     };
 
-      const { user, handleLogOut } = useContext(AuthContext);
-        const [isUser, isPending] = useUser();
-        if (isPending) return <p>Loading</p>;
-        const userRole = isUser?.[0]?.role;
+    const { user, handleLogOut } = useContext(AuthContext);
+    const [isUser, isPending] = useUser();
+    if (isPending)
+        return (<div className="flex justify-center items-center h-screen py-8">
+            <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-primary"></div>
+        </div>);
+    const userRole = isUser?.[0]?.role;
 
-   
+
 
     return (
         <div>
             {/* mobile navbar  */}
             <div className='flex justify-between md:hidden blurNavbar w-4/5 mx-auto py-4 items-center'>
                 <div>
-                     
+
                     <img src={logo} width={'40%'} alt="" />
                 </div>
                 <div>
@@ -66,34 +69,34 @@ const Dashboard_2 = () => {
                     {/* sidebar menu*/}
                     <nav className="py-4">
                         <ul className="space-y-2">
-                        {
+                            {
                                 userRole === 'tutor' && <>
                                     <NavLink to={'create-study-session'}
-                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50    active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50  text-black  active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                         <MdCreateNewFolder className="text-2xl mx-2" />
                                         Create Study session
 
                                     </NavLink>
                                     <NavLink to={'all_study_session'}
-                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 text-black  active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                         <CiViewList className="text-2xl mx-2" />
                                         View all Study session
 
                                     </NavLink>
                                     <NavLink to={'upload_materials'}
-                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 text-black  active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                         <IoCloudUploadOutline className="text-2xl mx-2" />
                                         Upload Materials
 
                                     </NavLink>
                                     <NavLink to={'all_materials'}
-                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 text-black  active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                         <CiViewList className="text-2xl mx-2" />
                                         View all Materials
 
                                     </NavLink>
                                     <NavLink to={'reject_reason'}
-                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 text-black  active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                         <ImCancelCircle className="text-2xl mx-2" />
                                         Rejected  Reason
 
@@ -105,13 +108,13 @@ const Dashboard_2 = () => {
                                 userRole === 'student' && <>
 
                                     <NavLink to={'view_booked_session'}
-                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 text-black  active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                         <IoBookmarksOutline className="text-2xl mx-2" />
                                         View booked session
                                     </NavLink>
 
                                     <NavLink to={'create_note'}
-                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 text-black  active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                         <LuNotebookPen className="text-2xl mx-2" />
                                         Create Note
                                     </NavLink>
@@ -119,13 +122,13 @@ const Dashboard_2 = () => {
 
 
                                     <NavLink to={'manage_notes'}
-                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50  text-black  active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                         <MdOutlineManageHistory className="text-2xl mx-2" />
                                         Manage notes
                                     </NavLink>
 
                                     <NavLink to={'study_materials'}
-                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50   active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
+                                        className={({ isActive }) => isActive ? "flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all   bg-primary text-white  outline-none" : 'flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 text-black  active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 outline-none'} >
                                         <IoBookOutline className="text-2xl mx-2" />
                                         Study Materials
                                     </NavLink>
@@ -201,7 +204,7 @@ const Dashboard_2 = () => {
 
                     {/* Main content */}
                     <div className="p-4 md:ml-4">
-                         <Outlet />
+                        <Outlet />
                     </div>
                 </div>
             </div>

@@ -55,7 +55,7 @@ const OverView = () => {
 
 
             <div className='flex justify-between items-center'>
-                <div className='w-2/4'>
+                <div className='w-2/4 flex items-center flex-col justify-center'>
                     <Line_charts></Line_charts>
                 </div>
                 <div className='w-2/4'>

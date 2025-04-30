@@ -35,6 +35,7 @@ import All_study_session_user from "./Components/All_study_session_user";
 import About_us from "./Components/About_us";
 import Contact_us from "./Components/Contact_us";
 import OverView from "./Components/OverView";
+import Dashboard_2 from "./Components/Dashboard_2";
 
   const router = createBrowserRouter([
     {
@@ -74,7 +75,8 @@ import OverView from "./Components/OverView";
     },
     {
       path:'/dashboard',
-      element:<PrivateRoute>  <Dashboard></Dashboard>  </PrivateRoute>,
+      
+      element:<PrivateRoute> <Dashboard_2></Dashboard_2>   </PrivateRoute>,
       children:[
         {
          path:'',

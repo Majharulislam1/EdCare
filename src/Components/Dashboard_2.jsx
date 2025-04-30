@@ -1,0 +1,110 @@
+import React, { useState } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { Link, Outlet } from 'react-router';
+import logo from '../assets/logo-black.png';
+
+const Dashboard_2 = () => {
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsOpen(!isOpen);
+    };
+
+    return (
+        <div>
+            {/* mobile navbar  */}
+            <div className='flex justify-between md:hidden blurNavbar w-4/5 mx-auto py-4 items-center'>
+                <div>
+                     
+                    <img src={logo} width={'40%'} alt="" />
+                </div>
+                <div>
+
+                    <button onClick={toggleSidebar}>
+                        {
+                            isOpen ? <FaTimes size={24} /> : <FaBars size={24} />
+                        }
+                    </button>
+                </div>
+            </div>
+
+            <div className="flex min-h-screen">
+
+
+
+                {/* Sidebar */}
+                <div
+                    className={`fixed inset-y-0 left-0 z-50 w-64   bg-[#3f405a40] backdrop-blur-xl text-white transform ${isOpen ? 'translate-x-0' : '-translate-x-full'
+                        } md:relative md:translate-x-0 transition-transform duration-300 ease-in-out`}
+                >
+                    {/* Sidebar Header */}
+                    <div className="flex items-center justify-between p-4 border-b border-gray-700">
+                        <h2 className="text-xl font-bold">Dashboard</h2>
+                        <button className="md:hidden" onClick={toggleSidebar}>
+                            <FaTimes size={24} />
+                        </button>
+                    </div>
+
+
+
+                    {/* sidebar menu*/}
+                    <nav className="py-4">
+                        <ul className="space-y-2">
+                            <li className='list-none'>
+                                <Link
+
+                                    className="flex items-center rounded-lg px-4 text-black py-2 hover:bg-custom-primary transition-colors"
+                                >
+                                    <span>Home</span>
+                                </Link>
+                            </li>
+                            <li className='list-none'>
+                                <Link
+
+                                    className="flex items-center text-black rounded-lg px-4 py-2 hover:bg-custom-primary transition-colors"
+                                >
+                                    <span>About</span>
+                                </Link>
+                            </li>
+                            <li className='list-none'>
+                                <Link
+
+                                    className="flex items-center text-black rounded-lg px-4 py-2 hover:bg-custom-primary transition-colors"
+                                >
+                                    <span>Services</span>
+                                </Link>
+                            </li>
+                            <li className='list-none'>
+                                <Link
+
+                                    className="flex items-center text-black rounded-lg px-4 py-2 hover:bg-custom-primary transition-colors"
+                                >
+                                    <span>Contact</span>
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                {/* Main Content */}
+                <div className="flex-1">
+                    {/* Overlay for mobile when sidebar is open */}
+                    {isOpen && (
+                        <div
+                            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+                            onClick={toggleSidebar}
+                        ></div>
+                    )}
+
+                    {/* Main content */}
+                    <div className="p-4 md:ml-4">
+                         <Outlet />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Dashboard_2;

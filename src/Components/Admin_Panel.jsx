@@ -5,6 +5,9 @@ import { FcDocument } from "react-icons/fc";
 import { FcComboChart } from "react-icons/fc";
 import CustomLineChart from './LineCharts';
 import CustomBarChart from './CustomBarChart';
+import TeamMembers from './TeamMembers';
+import ToDoList from './MeetingSlat';
+import ProgressTrack from './ProgressTrack';
 // import LineCharts from './LineChart';
 // import CustomBarChart from './BarCharts';
 // import DashboardWidgets from './TeamMembers';
@@ -92,8 +95,12 @@ const Admin_Panel = () => {
 
             <div className='grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4'>
                   {/* <TeamMembers></TeamMembers>
+            
                   <MeetingSlat></MeetingSlat>
                   <ProgressTrack></ProgressTrack> */}
+                  <TeamMembers></TeamMembers>
+                  <ToDoList></ToDoList>
+                  <ProgressTrack></ProgressTrack>
             </div>
 
             <div className="grid grid-cols-8 gap-4 my-6">

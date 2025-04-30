@@ -8,14 +8,9 @@ import CustomBarChart from './CustomBarChart';
 import TeamMembers from './TeamMembers';
 import ToDoList from './MeetingSlat';
 import ProgressTrack from './ProgressTrack';
-// import LineCharts from './LineChart';
-// import CustomBarChart from './BarCharts';
-// import DashboardWidgets from './TeamMembers';
-// import TeamMembers from './TeamMembers';
-// import MeetingSlat from './MeetingSlat';
-// import ProgressTrack from './Progress_Topic';
-// import PageVisits from './PageVisits';
-// import SocialTraffic from './SocialTraffic';
+import PageVisits from './PageVisits';
+import SocialTraffic from './SocialTraffic';
+ 
 
 const Admin_Panel = () => {
     return (
@@ -94,10 +89,6 @@ const Admin_Panel = () => {
             {/* table  card  */}
 
             <div className='grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4'>
-                  {/* <TeamMembers></TeamMembers>
-            
-                  <MeetingSlat></MeetingSlat>
-                  <ProgressTrack></ProgressTrack> */}
                   <TeamMembers></TeamMembers>
                   <ToDoList></ToDoList>
                   <ProgressTrack></ProgressTrack>
@@ -106,11 +97,13 @@ const Admin_Panel = () => {
             <div className="grid grid-cols-8 gap-4 my-6">
                 <div className="lg:col-span-5 col-span-8">
                     
-                    {/* <PageVisits></PageVisits> */}
+                    
+                    <PageVisits></PageVisits>
                      
                 </div>
                 <div className="lg:col-span-3 col-span-8">
-                     {/* <SocialTraffic></SocialTraffic> */}
+                     
+                     <SocialTraffic></SocialTraffic>
                 </div>
             </div>
 
